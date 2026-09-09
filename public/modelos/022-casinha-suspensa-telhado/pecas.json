@@ -1,0 +1,153 @@
+{
+  "versao": 1,
+  "projeto": "022",
+  "slug": "casinha-suspensa-telhado",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "861a960c12a75da112f6a73a2c0c5b2d0b1e9f39f6c9250a5af9283c2ab90954",
+    "bytes": 42103660,
+    "vertices": 754713,
+    "triangulos": 1467230,
+    "componentesConectados": 159
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      0,
+      1,
+      2
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    -0.000522,
+    0,
+    0.000373
+  ],
+  "tamanhoModelo": [
+    1.295856,
+    0.950992,
+    1.256994
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "piso",
+      "nome": "Piso",
+      "aliases": [],
+      "triangulos": 214012,
+      "etapaMontagem": 1,
+      "centro": [
+        -0.009492,
+        -0.264408,
+        -0.108728
+      ],
+      "vetorExplosao": [
+        -0.029248,
+        -0.862055,
+        -0.355703
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "fundo",
+      "nome": "Painel de fundo",
+      "aliases": [],
+      "triangulos": 224239,
+      "etapaMontagem": 2,
+      "centro": [
+        -0.096079,
+        -0.047585,
+        0.389457
+      ],
+      "vetorExplosao": [
+        -0.220978,
+        -0.110041,
+        0.899766
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "lateral-esquerda",
+      "nome": "Lateral esquerda",
+      "aliases": [],
+      "triangulos": 134067,
+      "etapaMontagem": 3,
+      "centro": [
+        0.430063,
+        -0.0393,
+        0.049015
+      ],
+      "vetorExplosao": [
+        0.923329,
+        -0.084273,
+        0.104308
+      ]
+    },
+    {
+      "indice": 3,
+      "id": "lateral-direita",
+      "nome": "Lateral direita",
+      "aliases": [],
+      "triangulos": 80917,
+      "etapaMontagem": 4,
+      "centro": [
+        -0.418559,
+        -0.155264,
+        -0.015605
+      ],
+      "vetorExplosao": [
+        -0.874077,
+        -0.324642,
+        -0.033408
+      ]
+    },
+    {
+      "indice": 4,
+      "id": "telhado-e",
+      "nome": "Água esquerda do telhado",
+      "aliases": [],
+      "triangulos": 405461,
+      "etapaMontagem": 5,
+      "centro": [
+        -0.177658,
+        0.257366,
+        -0.090172
+      ],
+      "vetorExplosao": [
+        -0.508075,
+        0.738196,
+        -0.259705
+      ]
+    },
+    {
+      "indice": 5,
+      "id": "telhado-d",
+      "nome": "Água direita do telhado",
+      "aliases": [],
+      "triangulos": 408534,
+      "etapaMontagem": 6,
+      "centro": [
+        0.135467,
+        0.251619,
+        -0.060777
+      ],
+      "vetorExplosao": [
+        0.433806,
+        0.802671,
+        -0.195068
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1467230,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

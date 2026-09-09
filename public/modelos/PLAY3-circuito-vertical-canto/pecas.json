@@ -1,0 +1,104 @@
+{
+  "versao": 1,
+  "projeto": "PLAY3",
+  "slug": "playground-circuito-vertical-canto",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "235836c7384e3a56a384afa504b4840d155de5c7e9af670c72eda65be5a0abc6",
+    "bytes": 42718400,
+    "vertices": 762511,
+    "triangulos": 1485512,
+    "componentesConectados": 118
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    -0.092454,
+    0,
+    -0.004509
+  ],
+  "tamanhoModelo": [
+    0.40584,
+    1,
+    0.794432
+  ],
+  "partes": [
+    {
+      "indice": 1,
+      "id": "poste",
+      "nome": "Poste arranhador",
+      "aliases": [
+        "plataforma-baixa"
+      ],
+      "triangulos": 1032237,
+      "etapaMontagem": 2,
+      "centro": [
+        -0.081669,
+        0.067956,
+        0.083925
+      ],
+      "vetorExplosao": [
+        0.069298,
+        0.436667,
+        0.56826
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "passarela",
+      "nome": "Passarela de ligação",
+      "aliases": [],
+      "triangulos": 139294,
+      "etapaMontagem": 3,
+      "centro": [
+        -0.164632,
+        0.051551,
+        -0.000452
+      ],
+      "vetorExplosao": [
+        -0.585295,
+        0.418027,
+        0.0329
+      ]
+    },
+    {
+      "indice": 4,
+      "id": "nicho",
+      "nome": "Módulo de nicho",
+      "aliases": [
+        "plataforma-alta",
+        "rede"
+      ],
+      "triangulos": 313981,
+      "etapaMontagem": 5,
+      "centro": [
+        -0.018755,
+        0.058863,
+        -0.142911
+      ],
+      "vetorExplosao": [
+        0.31682,
+        0.253046,
+        -0.594973
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1485512,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

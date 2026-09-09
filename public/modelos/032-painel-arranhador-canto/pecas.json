@@ -1,0 +1,117 @@
+{
+  "versao": 1,
+  "projeto": "032",
+  "slug": "painel-arranhador-canto",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "f06df15d04f5e150070504c6a60108e0fe145c0de598b00f344f177c13cccf2b",
+    "bytes": 42955396,
+    "vertices": 759455,
+    "triangulos": 1440370,
+    "componentesConectados": 592
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    0.000985,
+    0,
+    0.001001
+  ],
+  "tamanhoModelo": [
+    0.578126,
+    0.942686,
+    0.999984
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "painel",
+      "nome": "Painel estrutural",
+      "aliases": [],
+      "triangulos": 940697,
+      "etapaMontagem": 1,
+      "centro": [
+        0.026114,
+        0.057547,
+        0.106189
+      ],
+      "vetorExplosao": [
+        0.147687,
+        0.338214,
+        0.61821
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "sisal",
+      "nome": "Revestimento de sisal",
+      "aliases": [],
+      "triangulos": 148242,
+      "etapaMontagem": 2,
+      "centro": [
+        -0.238067,
+        0.040791,
+        -0.002841
+      ],
+      "vetorExplosao": [
+        -0.709641,
+        0.121091,
+        -0.011404
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "painel-lateral",
+      "nome": "Painel lateral",
+      "aliases": [],
+      "triangulos": 350009,
+      "etapaMontagem": 3,
+      "centro": [
+        0.095256,
+        0.06108,
+        -0.299399
+      ],
+      "vetorExplosao": [
+        0.211633,
+        0.137122,
+        -0.674383
+      ]
+    },
+    {
+      "indice": 3,
+      "id": "sisal-lateral",
+      "nome": "Revestimento lateral",
+      "aliases": [],
+      "triangulos": 1422,
+      "etapaMontagem": 4,
+      "centro": [
+        -0.042609,
+        0.119586,
+        -0.278614
+      ],
+      "vetorExplosao": [
+        -0.102165,
+        0.280254,
+        -0.655289
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1440370,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "versao": 1,
+  "projeto": "036",
+  "slug": "arranhador-banco",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "b591b3f85339f08c2c9c1a71f520a8beb28238346c98fb07355c8984dea7f0b9",
+    "bytes": 42985776,
+    "vertices": 754544,
+    "triangulos": 1475690,
+    "componentesConectados": 76
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      0,
+      1,
+      2
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    -0.004282,
+    0,
+    -0.005091
+  ],
+  "tamanhoModelo": [
+    1.021237,
+    0.248986,
+    0.99289
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "tampo",
+      "nome": "Tampo",
+      "aliases": [
+        "sisal"
+      ],
+      "triangulos": 1028582,
+      "etapaMontagem": 1,
+      "centro": [
+        0.020886,
+        0.094863,
+        0.023462
+      ],
+      "vetorExplosao": [
+        0.181053,
+        0.68241,
+        0.205399
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "pe-esquerdo",
+      "nome": "Pé esquerdo",
+      "aliases": [],
+      "triangulos": 234715,
+      "etapaMontagem": 3,
+      "centro": [
+        0.195226,
+        0.050083,
+        0.05959
+      ],
+      "vetorExplosao": [
+        0.680322,
+        0.170783,
+        0.220561
+      ]
+    },
+    {
+      "indice": 3,
+      "id": "pe-direito",
+      "nome": "Pé direito",
+      "aliases": [],
+      "triangulos": 212393,
+      "etapaMontagem": 4,
+      "centro": [
+        -0.284403,
+        0.024704,
+        -0.153526
+      ],
+      "vetorExplosao": [
+        -0.647746,
+        0.057125,
+        -0.34324
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1475690,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

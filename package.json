@@ -1,0 +1,40 @@
+{
+  "name": "area-3d-gatos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "validar": "tsc --noEmit",
+    "validar:projetos": "node scripts/validar-projetos-tecnicos.mjs",
+    "gerar:segmentacoes": "node scripts/gerar-segmentacoes-locais.mjs",
+    "auditar:segmentacoes": "node scripts/auditar-segmentacoes-locais.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@react-three/drei": "^10.7.6",
+    "@react-three/fiber": "^9.3.0",
+    "@supabase/supabase-js": "^2.116.0",
+    "next": "^16.3.2",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "server-only": "^0.0.1",
+    "three": "^0.180.0",
+    "three-mesh-bvh": "^0.9.7",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^26.4.1",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@types/three": "^0.180.0",
+    "playwright": "^1.63.0",
+    "typescript": "^7.0.2"
+  },
+  "private": true
+}

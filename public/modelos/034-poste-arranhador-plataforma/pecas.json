@@ -1,0 +1,101 @@
+{
+  "versao": 1,
+  "projeto": "034",
+  "slug": "poste-arranhador-plataforma",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "d585ef2e9546b53d14156c201b87c120e92fdb6f1ca60ffb0a0c0d6a05c5655d",
+    "bytes": 43106812,
+    "vertices": 762046,
+    "triangulos": 1491310,
+    "componentesConectados": 87
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      0,
+      1,
+      2
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    -0.00075,
+    0,
+    0.000206
+  ],
+  "tamanhoModelo": [
+    0.807769,
+    1,
+    0.799822
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "base",
+      "nome": "Base",
+      "aliases": [],
+      "triangulos": 211628,
+      "etapaMontagem": 1,
+      "centro": [
+        -0.013613,
+        -0.475732,
+        0.01594
+      ],
+      "vetorExplosao": [
+        -0.019449,
+        -0.719344,
+        0.02379
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "sisal",
+      "nome": "Revestimento de sisal",
+      "aliases": [
+        "poste"
+      ],
+      "triangulos": 1133260,
+      "etapaMontagem": 3,
+      "centro": [
+        0.002246,
+        0.008853,
+        -0.015455
+      ],
+      "vetorExplosao": [
+        0.118279,
+        0.349488,
+        -0.618278
+      ]
+    },
+    {
+      "indice": 3,
+      "id": "topo",
+      "nome": "Plataforma superior",
+      "aliases": [],
+      "triangulos": 146422,
+      "etapaMontagem": 4,
+      "centro": [
+        -0.00306,
+        0.489299,
+        -0.001451
+      ],
+      "vetorExplosao": [
+        -0.003399,
+        0.719988,
+        -0.002439
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1491310,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

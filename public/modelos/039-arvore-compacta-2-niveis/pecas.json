@@ -1,0 +1,119 @@
+{
+  "versao": 1,
+  "projeto": "039",
+  "slug": "arvore-compacta-2-niveis",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "e370649b4b2d9cafeb9bcaa2ddd42fe7657a36f30f522008d2bcb99d127ab455",
+    "bytes": 41239536,
+    "vertices": 736298,
+    "triangulos": 1433530,
+    "componentesConectados": 127
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    -0.015843,
+    0,
+    -0.003201
+  ],
+  "tamanhoModelo": [
+    0.677618,
+    1,
+    0.822696
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "base",
+      "nome": "Base",
+      "aliases": [],
+      "triangulos": 379008,
+      "etapaMontagem": 1,
+      "centro": [
+        -0.016258,
+        -0.482156,
+        -0.013737
+      ],
+      "vetorExplosao": [
+        -0.00062,
+        -0.719828,
+        -0.015729
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "poste",
+      "nome": "Poste estrutural",
+      "aliases": [
+        "plataforma-2"
+      ],
+      "triangulos": 337121,
+      "etapaMontagem": 2,
+      "centro": [
+        -0.035472,
+        0.065595,
+        -0.021079
+      ],
+      "vetorExplosao": [
+        -0.199718,
+        0.667401,
+        -0.181904
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "sisal",
+      "nome": "Revestimento de sisal",
+      "aliases": [],
+      "triangulos": 698556,
+      "etapaMontagem": 3,
+      "centro": [
+        -0.00433,
+        0.043376,
+        -0.0033
+      ],
+      "vetorExplosao": [
+        0.184706,
+        0.695903,
+        -0.001593
+      ]
+    },
+    {
+      "indice": 3,
+      "id": "plataforma-1",
+      "nome": "Plataforma 1",
+      "aliases": [],
+      "triangulos": 18845,
+      "etapaMontagem": 4,
+      "centro": [
+        0.008526,
+        -0.176009,
+        0.010309
+      ],
+      "vetorExplosao": [
+        0.098458,
+        -0.711144,
+        0.054585
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1433530,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

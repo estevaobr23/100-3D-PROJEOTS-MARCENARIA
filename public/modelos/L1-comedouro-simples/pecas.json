@@ -1,0 +1,117 @@
+{
+  "versao": 1,
+  "projeto": "L1",
+  "slug": "comedouro-simples",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "2a925f18de66bebb8727203e3c323996598ddfb9c9d9b53d54a7f5350b1aa7d2",
+    "bytes": 42909036,
+    "vertices": 762100,
+    "triangulos": 1489148,
+    "componentesConectados": 94
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    0.000136,
+    0,
+    -0.000223
+  ],
+  "tamanhoModelo": [
+    1.24407,
+    0.624914,
+    1.282299
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "tampo",
+      "nome": "Tampo",
+      "aliases": [],
+      "triangulos": 542225,
+      "etapaMontagem": 1,
+      "centro": [
+        0.029211,
+        0.262645,
+        -0.038212
+      ],
+      "vetorExplosao": [
+        0.100554,
+        0.908311,
+        -0.131379
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "pe-e",
+      "nome": "Pé esquerdo",
+      "aliases": [],
+      "triangulos": 147859,
+      "etapaMontagem": 2,
+      "centro": [
+        0.039339,
+        0.03489,
+        0.414141
+      ],
+      "vetorExplosao": [
+        0.086657,
+        0.077124,
+        0.915938
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "pe-d",
+      "nome": "Pé direito",
+      "aliases": [],
+      "triangulos": 125612,
+      "etapaMontagem": 3,
+      "centro": [
+        -0.039662,
+        0.009635,
+        -0.394964
+      ],
+      "vetorExplosao": [
+        -0.092586,
+        0.022414,
+        -0.918327
+      ]
+    },
+    {
+      "indice": 3,
+      "id": "pote-1",
+      "nome": "Pote 1",
+      "aliases": [],
+      "triangulos": 673452,
+      "etapaMontagem": 4,
+      "centro": [
+        -0.022099,
+        0.13661,
+        0.015812
+      ],
+      "vetorExplosao": [
+        -0.14733,
+        0.90521,
+        0.10625
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1489148,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

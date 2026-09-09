@@ -1,0 +1,99 @@
+{
+  "versao": 1,
+  "projeto": "H1",
+  "slug": "rede-suspensa-parede",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "cd535b7ba7f7d2548569fda54b20394d00d1cd99370ebf039a510f7d5d52630f",
+    "bytes": 42639084,
+    "vertices": 757459,
+    "triangulos": 1482776,
+    "componentesConectados": 79
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    -0.010211,
+    0,
+    -0.014412
+  ],
+  "tamanhoModelo": [
+    1.029186,
+    0.312942,
+    1.112191
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "tecido",
+      "nome": "Rede de descanso",
+      "aliases": [],
+      "triangulos": 378883,
+      "etapaMontagem": 1,
+      "centro": [
+        0.003901,
+        -0.003929,
+        0.018917
+      ],
+      "vetorExplosao": [
+        0.310415,
+        -0.086427,
+        0.733087
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "trilho-e",
+      "nome": "Travessa esquerda",
+      "aliases": [],
+      "triangulos": 565752,
+      "etapaMontagem": 2,
+      "centro": [
+        0.177724,
+        -0.026867,
+        -0.105454
+      ],
+      "vetorExplosao": [
+        0.714776,
+        -0.102182,
+        -0.346264
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "trilho-d",
+      "nome": "Travessa direita",
+      "aliases": [],
+      "triangulos": 538141,
+      "etapaMontagem": 3,
+      "centro": [
+        -0.213893,
+        -0.034067,
+        0.080877
+      ],
+      "vetorExplosao": [
+        -0.717144,
+        -0.119946,
+        0.335502
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1482776,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

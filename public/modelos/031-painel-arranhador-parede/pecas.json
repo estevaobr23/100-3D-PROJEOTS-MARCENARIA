@@ -1,0 +1,81 @@
+{
+  "versao": 1,
+  "projeto": "031",
+  "slug": "painel-arranhador-parede",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "8ca18522f61366c71896af3d49412d11160d52402b4309b81dd903fc7cc6d73a",
+    "bytes": 44002848,
+    "vertices": 772691,
+    "triangulos": 1489462,
+    "componentesConectados": 238
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      1
+    ]
+  },
+  "centroModelo": [
+    -0.000139,
+    0,
+    -0.000102
+  ],
+  "tamanhoModelo": [
+    0.50245,
+    1,
+    0.743247
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "painel",
+      "nome": "Painel estrutural",
+      "aliases": [],
+      "triangulos": 1267976,
+      "etapaMontagem": 1,
+      "centro": [
+        -0.037758,
+        0.002536,
+        -0.048155
+      ],
+      "vetorExplosao": [
+        -0.443448,
+        0.029897,
+        -0.566445
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "sisal",
+      "nome": "Revestimento de sisal",
+      "aliases": [],
+      "triangulos": 221486,
+      "etapaMontagem": 2,
+      "centro": [
+        0.209052,
+        -0.001317,
+        0.260454
+      ],
+      "vetorExplosao": [
+        0.450757,
+        -0.002839,
+        0.561436
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1489462,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

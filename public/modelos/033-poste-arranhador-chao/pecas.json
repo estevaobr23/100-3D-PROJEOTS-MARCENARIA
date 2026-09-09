@@ -1,0 +1,99 @@
+{
+  "versao": 1,
+  "projeto": "033",
+  "slug": "poste-arranhador-chao",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "9a642054141d09e820cad895b01aa8e481fa05ed08d96dfc453dc52e80b254f8",
+    "bytes": 42612884,
+    "vertices": 757623,
+    "triangulos": 1486532,
+    "componentesConectados": 67
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      0,
+      1,
+      2
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    0.000989,
+    0,
+    -0.000337
+  ],
+  "tamanhoModelo": [
+    0.912676,
+    1,
+    0.910968
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "base",
+      "nome": "Base",
+      "aliases": [],
+      "triangulos": 446912,
+      "etapaMontagem": 1,
+      "centro": [
+        0.002354,
+        -0.475527,
+        -0.017083
+      ],
+      "vetorExplosao": [
+        0.002066,
+        -0.719551,
+        -0.02534
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "poste",
+      "nome": "Poste estrutural",
+      "aliases": [],
+      "triangulos": 525535,
+      "etapaMontagem": 2,
+      "centro": [
+        0.005952,
+        0.01193,
+        -0.003855
+      ],
+      "vetorExplosao": [
+        0.266888,
+        0.641409,
+        -0.189117
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "sisal",
+      "nome": "Revestimento de sisal",
+      "aliases": [],
+      "triangulos": 514085,
+      "etapaMontagem": 3,
+      "centro": [
+        -0.000761,
+        -0.055618,
+        0.012925
+      ],
+      "vetorExplosao": [
+        -0.022023,
+        -0.700037,
+        0.166922
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1486532,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

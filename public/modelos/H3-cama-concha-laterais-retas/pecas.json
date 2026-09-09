@@ -1,0 +1,84 @@
+{
+  "versao": 1,
+  "projeto": "H3",
+  "slug": "cama-concha-laterais-retas",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "40e366e8cdef25a44544a9cf33f1fb5d495ac41b13d60b6eafa90f7dfbbc1727",
+    "bytes": 40573756,
+    "vertices": 719784,
+    "triangulos": 1403380,
+    "componentesConectados": 123
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    0.001054,
+    0,
+    0.000224
+  ],
+  "tamanhoModelo": [
+    0.726419,
+    0.588433,
+    0.999915
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "base",
+      "nome": "Base da cama",
+      "aliases": [],
+      "triangulos": 133433,
+      "etapaMontagem": 1,
+      "centro": [
+        0.039347,
+        -0.255612,
+        0.006372
+      ],
+      "vetorExplosao": [
+        0.106631,
+        -0.711793,
+        0.017122
+      ]
+    },
+    {
+      "indice": 3,
+      "id": "almofada",
+      "nome": "Almofada",
+      "aliases": [
+        "lateral-e",
+        "lateral-d"
+      ],
+      "triangulos": 1269947,
+      "etapaMontagem": 4,
+      "centro": [
+        -0.026385,
+        -0.051672,
+        0.003486
+      ],
+      "vetorExplosao": [
+        -0.337131,
+        -0.634861,
+        0.040078
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1403380,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

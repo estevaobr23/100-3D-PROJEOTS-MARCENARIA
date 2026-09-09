@@ -1,0 +1,137 @@
+{
+  "versao": 1,
+  "projeto": "PLAY1",
+  "slug": "playground-circuito-parede-simples",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "0daa0d80beeb1d473ac48f60da6f66f3b377066ef176d8a1a166be7be405c74c",
+    "bytes": 37335844,
+    "vertices": 668164,
+    "triangulos": 1287228,
+    "componentesConectados": 208
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      1,
+      1,
+      1
+    ]
+  },
+  "centroModelo": [
+    0,
+    0,
+    0
+  ],
+  "tamanhoModelo": [
+    0.151863,
+    0.376805,
+    1
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "plataforma-baixa",
+      "nome": "Plataforma baixa",
+      "aliases": [],
+      "triangulos": 60042,
+      "etapaMontagem": 1,
+      "centro": [
+        0.017917,
+        -0.093041,
+        0.383085
+      ],
+      "vetorExplosao": [
+        0.032689,
+        -0.169754,
+        0.698939
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "poste",
+      "nome": "Poste arranhador",
+      "aliases": [],
+      "triangulos": 582097,
+      "etapaMontagem": 2,
+      "centro": [
+        0.001255,
+        0.083415,
+        -0.282536
+      ],
+      "vetorExplosao": [
+        0.003068,
+        0.203868,
+        -0.690528
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "passarela",
+      "nome": "Passarela de ligação",
+      "aliases": [],
+      "triangulos": 210423,
+      "etapaMontagem": 3,
+      "centro": [
+        0.00678,
+        0.00657,
+        0.072258
+      ],
+      "vetorExplosao": [
+        0.06699,
+        0.064913,
+        0.713932
+      ]
+    },
+    {
+      "indice": 4,
+      "id": "nicho",
+      "nome": "Módulo de nicho",
+      "aliases": [
+        "plataforma-alta"
+      ],
+      "triangulos": 427855,
+      "etapaMontagem": 5,
+      "centro": [
+        -0.022106,
+        -0.055985,
+        0.222068
+      ],
+      "vetorExplosao": [
+        -0.069178,
+        -0.175196,
+        0.694925
+      ]
+    },
+    {
+      "indice": 5,
+      "id": "rede",
+      "nome": "Rede de descanso",
+      "aliases": [],
+      "triangulos": 6811,
+      "etapaMontagem": 6,
+      "centro": [
+        -0.02068,
+        0.122014,
+        -0.461497
+      ],
+      "vetorExplosao": [
+        -0.031163,
+        0.183862,
+        -0.69543
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1287228,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "versao": 1,
+  "projeto": "G2",
+  "slug": "plataforma-descanso-borda",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "b0d2c2ad261fe6fac994107b8f662e91b2d9b047131c6f3c331e524aa6c02870",
+    "bytes": 42005064,
+    "vertices": 747490,
+    "triangulos": 1459442,
+    "componentesConectados": 92
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      1
+    ]
+  },
+  "centroModelo": [
+    0.000216,
+    0,
+    0.00106
+  ],
+  "tamanhoModelo": [
+    0.781036,
+    0.278279,
+    1.024756
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "plataforma",
+      "nome": "Plataforma",
+      "aliases": [],
+      "triangulos": 1164989,
+      "etapaMontagem": 1,
+      "centro": [
+        0.013166,
+        0.013991,
+        -0.058167
+      ],
+      "vetorExplosao": [
+        0.153569,
+        0.165909,
+        -0.702336
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "suporte-e",
+      "nome": "Suporte esquerdo",
+      "aliases": [],
+      "triangulos": 226484,
+      "etapaMontagem": 2,
+      "centro": [
+        -0.267629,
+        0.046031,
+        0.250538
+      ],
+      "vetorExplosao": [
+        -0.535684,
+        0.092062,
+        0.498951
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "suporte-d",
+      "nome": "Suporte direito",
+      "aliases": [],
+      "triangulos": 32937,
+      "etapaMontagem": 3,
+      "centro": [
+        -0.171592,
+        0.08789,
+        -0.017038
+      ],
+      "vetorExplosao": [
+        -0.653995,
+        0.334558,
+        -0.068894
+      ]
+    },
+    {
+      "indice": 3,
+      "id": "borda",
+      "nome": "Borda de proteção",
+      "aliases": [],
+      "triangulos": 35032,
+      "etapaMontagem": 4,
+      "centro": [
+        0.339837,
+        0.054168,
+        -0.339609
+      ],
+      "vetorExplosao": [
+        0.517645,
+        0.082562,
+        -0.519242
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1459442,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "versao": 1,
+  "projeto": "041",
+  "slug": "torre-alta-vertical",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "876b44df11d1e16e5166795b9fb28fcdc3f1ea4b42ff8d0b8b84f928eafdd66e",
+    "bytes": 40964180,
+    "vertices": 731470,
+    "triangulos": 1422590,
+    "componentesConectados": 119
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    -0.00024,
+    0,
+    0.000096
+  ],
+  "tamanhoModelo": [
+    0.408008,
+    1,
+    0.610436
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "base",
+      "nome": "Base",
+      "aliases": [
+        "plataforma-1"
+      ],
+      "triangulos": 368842,
+      "etapaMontagem": 1,
+      "centro": [
+        -0.010216,
+        -0.487917,
+        0.00496
+      ],
+      "vetorExplosao": [
+        -0.014716,
+        -0.719814,
+        0.007176
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "poste",
+      "nome": "Poste estrutural",
+      "aliases": [
+        "plataforma-2",
+        "plataforma-3"
+      ],
+      "triangulos": 156853,
+      "etapaMontagem": 2,
+      "centro": [
+        0.003805,
+        0.034059,
+        0.009875
+      ],
+      "vetorExplosao": [
+        0.081663,
+        0.687577,
+        0.197405
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "sisal",
+      "nome": "Revestimento de sisal",
+      "aliases": [],
+      "triangulos": 896895,
+      "etapaMontagem": 3,
+      "centro": [
+        -0.006694,
+        0.088902,
+        0.006334
+      ],
+      "vetorExplosao": [
+        -0.052002,
+        0.716358,
+        0.050265
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1422590,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "versao": 1,
+  "projeto": "A5",
+  "slug": "passarela-recorte-reto",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "6cbce1852d3e46b9cfa96fabd1d178839121a006d3c93e04ba40edbba1e00661",
+    "bytes": 40859552,
+    "vertices": 725356,
+    "triangulos": 1423352,
+    "componentesConectados": 55
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      1
+    ]
+  },
+  "centroModelo": [
+    0,
+    0,
+    0
+  ],
+  "tamanhoModelo": [
+    0.618669,
+    0.119041,
+    1
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "plataforma",
+      "nome": "Passarela",
+      "aliases": [],
+      "triangulos": 748305,
+      "etapaMontagem": 1,
+      "centro": [
+        -0.062938,
+        0.007365,
+        -0.141345
+      ],
+      "vetorExplosao": [
+        -0.292547,
+        0.034233,
+        -0.656996
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "suporte-e",
+      "nome": "Suporte esquerdo",
+      "aliases": [],
+      "triangulos": 244060,
+      "etapaMontagem": 2,
+      "centro": [
+        -0.228989,
+        0.009508,
+        0.263158
+      ],
+      "vetorExplosao": [
+        -0.472457,
+        0.019616,
+        0.542955
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "suporte-d",
+      "nome": "Suporte direito",
+      "aliases": [],
+      "triangulos": 330028,
+      "etapaMontagem": 3,
+      "centro": [
+        -0.235739,
+        0.021792,
+        -0.301133
+      ],
+      "vetorExplosao": [
+        -0.443105,
+        0.04096,
+        -0.566021
+      ]
+    },
+    {
+      "indice": 3,
+      "id": "borda",
+      "nome": "Borda de proteção",
+      "aliases": [],
+      "triangulos": 100959,
+      "etapaMontagem": 4,
+      "centro": [
+        0.237889,
+        0.018968,
+        -0.436074
+      ],
+      "vetorExplosao": [
+        0.344557,
+        0.027473,
+        -0.631606
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1423352,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

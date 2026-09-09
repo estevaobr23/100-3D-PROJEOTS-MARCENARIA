@@ -1,0 +1,117 @@
+{
+  "versao": 1,
+  "projeto": "G3",
+  "slug": "mirante-de-janela",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "304960e1d17544c22a16f1a6afa9ea222f99477b33b2e3c26fab956875726456",
+    "bytes": 42116336,
+    "vertices": 754297,
+    "triangulos": 1459584,
+    "componentesConectados": 209
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      1
+    ]
+  },
+  "centroModelo": [
+    -0.00002,
+    0,
+    0.000138
+  ],
+  "tamanhoModelo": [
+    1.240625,
+    0.543395,
+    1.279423
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "plataforma",
+      "nome": "Plataforma",
+      "aliases": [],
+      "triangulos": 937974,
+      "etapaMontagem": 1,
+      "centro": [
+        0.036152,
+        0.11518,
+        0.053514
+      ],
+      "vetorExplosao": [
+        0.252432,
+        0.803805,
+        0.3725
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "suporte-e",
+      "nome": "Suporte esquerdo",
+      "aliases": [],
+      "triangulos": 148750,
+      "etapaMontagem": 2,
+      "centro": [
+        -0.315377,
+        0.197433,
+        0.200091
+      ],
+      "vetorExplosao": [
+        -0.687763,
+        0.430581,
+        0.436077
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "suporte-d",
+      "nome": "Suporte direito",
+      "aliases": [],
+      "triangulos": 258442,
+      "etapaMontagem": 3,
+      "centro": [
+        -0.415568,
+        0.129334,
+        -0.20202
+      ],
+      "vetorExplosao": [
+        -0.797708,
+        0.248276,
+        -0.388074
+      ]
+    },
+    {
+      "indice": 3,
+      "id": "borda",
+      "nome": "Borda de proteção",
+      "aliases": [],
+      "triangulos": 114418,
+      "etapaMontagem": 4,
+      "centro": [
+        0.46666,
+        0.173336,
+        0.204653
+      ],
+      "vetorExplosao": [
+        0.798767,
+        0.296681,
+        0.350047
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1459584,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

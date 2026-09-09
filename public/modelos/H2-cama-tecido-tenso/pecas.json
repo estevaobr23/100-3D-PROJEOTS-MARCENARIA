@@ -1,0 +1,99 @@
+{
+  "versao": 1,
+  "projeto": "H2",
+  "slug": "cama-tecido-tenso",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "17daf007245a39006ac3bb7144269f88b5de86b1cd6bd4b0b3e2e2a8f4d44857",
+    "bytes": 41466160,
+    "vertices": 732407,
+    "triangulos": 1418232,
+    "componentesConectados": 178
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      0,
+      1,
+      2
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    -0.004461,
+    0,
+    0.004625
+  ],
+  "tamanhoModelo": [
+    1.368189,
+    0.262782,
+    1.366386
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "tecido",
+      "nome": "Tecido estrutural",
+      "aliases": [],
+      "triangulos": 556445,
+      "etapaMontagem": 1,
+      "centro": [
+        0.08734,
+        -0.008895,
+        -0.055943
+      ],
+      "vetorExplosao": [
+        0.819577,
+        -0.079412,
+        -0.540741
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "trilho-e",
+      "nome": "Travessa esquerda",
+      "aliases": [],
+      "triangulos": 569767,
+      "etapaMontagem": 2,
+      "centro": [
+        -0.158902,
+        0.014439,
+        0.335068
+      ],
+      "vetorExplosao": [
+        -0.416778,
+        0.038965,
+        0.891735
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "trilho-d",
+      "nome": "Travessa direita",
+      "aliases": [],
+      "triangulos": 292020,
+      "etapaMontagem": 3,
+      "centro": [
+        -0.076436,
+        0.025143,
+        -0.244646
+      ],
+      "vetorExplosao": [
+        -0.272002,
+        0.095016,
+        -0.942019
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1418232,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

@@ -1,0 +1,114 @@
+/* app/globals.css
+ *
+ * Sistema de cor: UM PAPEL POR COR. Nenhuma cor é escolhida na tela — a tela
+ * pede o papel ("superfície elevada", "texto de apoio") e o token responde.
+ * Trocar a identidade é trocar os HSL aqui, sem tocar em componente.
+ *
+ * Identidade: oficina de marcenaria. Madeira, grafite de lápis de carpinteiro,
+ * papel de plano de corte. Nada de pet shop.
+ */
+
+:root {
+  /* ── Base: papel e grafite ─────────────────────────────────── */
+  --fundo: #ffffff;
+  --fundo-alt: #e8eef3;
+  --superficie: #ffffff;
+  --superficie-alta: #f4f7fa;
+
+  --texto: #111827;
+  --texto-apoio: #374151;
+  --texto-fraco: #64748b;
+
+  --borda: #cbd5e1;
+  --borda-forte: #94a3b8;
+
+  /* ── Ação: madeira ─────────────────────────────────────────── */
+  --acao: #ea580c;
+  --acao-forte: #a9360b;
+  --acao-suave: #fff0e6;
+  --sobre-acao: #ffffff;
+
+  /* ── Estado ────────────────────────────────────────────────── */
+  /* "pronto": passou no validador, abre. */
+  --pronto: #08783d;
+  --pronto-suave: #e5f7ed;
+  /* "preparando": é dele, ainda sendo derivado. NUNCA usado para "não é seu". */
+  --preparando: #92400e;
+  --preparando-suave: #fff3cf;
+
+  /* ── Forma ─────────────────────────────────────────────────── */
+  --raio: 10px;
+  --raio-g: 16px;
+  --sombra: 0 1px 2px rgb(15 23 42 / 0.08), 0 4px 12px rgb(15 23 42 / 0.06);
+  --sombra-alta: 0 3px 8px rgb(15 23 42 / 0.1), 0 14px 32px rgb(15 23 42 / 0.12);
+
+  --largura: 1120px;
+  --gap: 20px;
+
+  --fonte: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --fonte-medida: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Fundo branco para leitura técnica; a cor fica nos estados e nas ações. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.8;
+  background-image:
+    radial-gradient(circle at 8% 4%, rgb(234 88 12 / 0.06), transparent 28%),
+    radial-gradient(circle at 92% 2%, rgb(37 99 235 / 0.05), transparent 26%);
+}
+
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgb(234 88 12 / 0.34);
+  outline-offset: 2px;
+}
+
+.envolucro {
+  position: relative;
+  z-index: 1;
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (max-width: 700px) {
+  .envolucro { padding-right: 16px; padding-left: 16px; }
+}
+
+/* Medida SEMPRE em monoespaçada e com tabular-nums: números de peças
+ * diferentes alinham em coluna, e 1 não fica mais estreito que 8. */
+.medida {
+  font-family: var(--fonte-medida);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

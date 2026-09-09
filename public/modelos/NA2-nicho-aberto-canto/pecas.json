@@ -1,0 +1,135 @@
+{
+  "versao": 1,
+  "projeto": "NA2",
+  "slug": "nicho-aberto-canto",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "ffe5f63c91026aa15da1cc9468254bc8066c465c3c62a92713fa223f08577976",
+    "bytes": 42261268,
+    "vertices": 762521,
+    "triangulos": 1446488,
+    "componentesConectados": 679
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      1
+    ]
+  },
+  "centroModelo": [
+    -0.02449,
+    0,
+    0.026055
+  ],
+  "tamanhoModelo": [
+    1.286898,
+    0.895159,
+    1.288313
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "piso",
+      "nome": "Piso",
+      "aliases": [],
+      "triangulos": 468959,
+      "etapaMontagem": 1,
+      "centro": [
+        0.070679,
+        -0.343473,
+        0.047281
+      ],
+      "vetorExplosao": [
+        0.247245,
+        -0.892325,
+        0.055146
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "fundo",
+      "nome": "Painel de fundo",
+      "aliases": [],
+      "triangulos": 220762,
+      "etapaMontagem": 2,
+      "centro": [
+        -0.447305,
+        0.021765,
+        -0.051419
+      ],
+      "vetorExplosao": [
+        -0.911228,
+        0.046908,
+        -0.166967
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "lateral-esquerda",
+      "nome": "Lateral esquerda",
+      "aliases": [],
+      "triangulos": 186267,
+      "etapaMontagem": 3,
+      "centro": [
+        0.044261,
+        -0.001854,
+        0.451752
+      ],
+      "vetorExplosao": [
+        0.14789,
+        -0.003989,
+        0.915712
+      ]
+    },
+    {
+      "indice": 3,
+      "id": "lateral-direita",
+      "nome": "Lateral direita",
+      "aliases": [],
+      "triangulos": 150148,
+      "etapaMontagem": 4,
+      "centro": [
+        -0.067064,
+        -0.014093,
+        -0.475931
+      ],
+      "vetorExplosao": [
+        -0.078357,
+        -0.025938,
+        -0.923906
+      ]
+    },
+    {
+      "indice": 4,
+      "id": "teto",
+      "nome": "Teto",
+      "aliases": [],
+      "triangulos": 420352,
+      "etapaMontagem": 5,
+      "centro": [
+        0.069781,
+        0.354369,
+        0.037011
+      ],
+      "vetorExplosao": [
+        0.238362,
+        0.896008,
+        0.027704
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1446488,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

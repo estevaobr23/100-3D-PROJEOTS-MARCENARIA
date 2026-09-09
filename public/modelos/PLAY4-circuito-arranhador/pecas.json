@@ -1,0 +1,153 @@
+{
+  "versao": 1,
+  "projeto": "PLAY4",
+  "slug": "playground-circuito-arranhador",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "a8e1017d85d6c3ab34d9fa92569c6bb4f169df611fd301531410e6ef6af2df27",
+    "bytes": 42288484,
+    "vertices": 754554,
+    "triangulos": 1459220,
+    "componentesConectados": 184
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      1
+    ]
+  },
+  "centroModelo": [
+    0.003309,
+    0,
+    0.002602
+  ],
+  "tamanhoModelo": [
+    0.777754,
+    0.600216,
+    0.920603
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "plataforma-baixa",
+      "nome": "Plataforma baixa",
+      "aliases": [],
+      "triangulos": 209,
+      "etapaMontagem": 1,
+      "centro": [
+        0.276436,
+        -0.133055,
+        0.343393
+      ],
+      "vetorExplosao": [
+        0.396532,
+        -0.193172,
+        0.494768
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "poste",
+      "nome": "Poste arranhador",
+      "aliases": [],
+      "triangulos": 428148,
+      "etapaMontagem": 2,
+      "centro": [
+        0.235176,
+        -0.051842,
+        0.305445
+      ],
+      "vetorExplosao": [
+        0.399276,
+        -0.089272,
+        0.521496
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "passarela",
+      "nome": "Passarela de ligação",
+      "aliases": [],
+      "triangulos": 1,
+      "etapaMontagem": 3,
+      "centro": [
+        0.293578,
+        0.01978,
+        0.312418
+      ],
+      "vetorExplosao": [
+        0.452696,
+        0.030848,
+        0.483181
+      ]
+    },
+    {
+      "indice": 3,
+      "id": "plataforma-alta",
+      "nome": "Plataforma alta",
+      "aliases": [],
+      "triangulos": 313386,
+      "etapaMontagem": 4,
+      "centro": [
+        -0.02427,
+        0.128398,
+        -0.051824
+      ],
+      "vetorExplosao": [
+        -0.128593,
+        0.598677,
+        -0.253769
+      ]
+    },
+    {
+      "indice": 4,
+      "id": "nicho",
+      "nome": "Módulo de nicho",
+      "aliases": [],
+      "triangulos": 321811,
+      "etapaMontagem": 5,
+      "centro": [
+        -0.192994,
+        0.216187,
+        -0.253841
+      ],
+      "vetorExplosao": [
+        -0.334806,
+        0.36872,
+        -0.437378
+      ]
+    },
+    {
+      "indice": 5,
+      "id": "rede",
+      "nome": "Rede de descanso",
+      "aliases": [],
+      "triangulos": 395665,
+      "etapaMontagem": 6,
+      "centro": [
+        0.047787,
+        0.199721,
+        0.067238
+      ],
+      "vetorExplosao": [
+        0.13739,
+        0.616935,
+        0.199659
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1459220,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

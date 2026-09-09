@@ -1,0 +1,99 @@
+{
+  "versao": 1,
+  "projeto": "B2",
+  "slug": "ponte-tecido-reforcado",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "2a915687b28af60acf8b3f7ede60a2c3deb4ff4ad3094380354ffcb5ba2e19e1",
+    "bytes": 42524960,
+    "vertices": 753738,
+    "triangulos": 1469626,
+    "componentesConectados": 127
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    0.000256,
+    0,
+    0.000079
+  ],
+  "tamanhoModelo": [
+    0.880775,
+    0.263697,
+    1.010154
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "tecido",
+      "nome": "Tecido estrutural",
+      "aliases": [],
+      "triangulos": 475484,
+      "etapaMontagem": 1,
+      "centro": [
+        -0.001907,
+        -0.00361,
+        0.012744
+      ],
+      "vetorExplosao": [
+        -0.117848,
+        -0.196715,
+        0.690215
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "trilho-e",
+      "nome": "Travessa esquerda",
+      "aliases": [],
+      "triangulos": 496291,
+      "etapaMontagem": 2,
+      "centro": [
+        0.269422,
+        0.010946,
+        0.335927
+      ],
+      "vetorExplosao": [
+        0.454703,
+        0.018492,
+        0.567348
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "trilho-d",
+      "nome": "Travessa direita",
+      "aliases": [],
+      "triangulos": 497851,
+      "etapaMontagem": 3,
+      "centro": [
+        -0.262617,
+        0.01006,
+        -0.341346
+      ],
+      "vetorExplosao": [
+        -0.44358,
+        0.016976,
+        -0.576133
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1469626,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

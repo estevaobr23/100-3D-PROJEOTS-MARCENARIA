@@ -1,0 +1,99 @@
+{
+  "versao": 1,
+  "projeto": "J1",
+  "slug": "protetor-canto-sofa",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "ae9ce54a030ba0d59e7b6df689e2b07da3c9e5894074a05bf0fe81610a9b1057",
+    "bytes": 41750132,
+    "vertices": 725471,
+    "triangulos": 1403854,
+    "componentesConectados": 192
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    -0.180534,
+    0,
+    -0.000582
+  ],
+  "tamanhoModelo": [
+    0.993739,
+    0.362029,
+    1.350883
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "painel-frente",
+      "nome": "Painel frontal",
+      "aliases": [],
+      "triangulos": 821386,
+      "etapaMontagem": 1,
+      "centro": [
+        -0.118956,
+        0.006706,
+        0.104644
+      ],
+      "vetorExplosao": [
+        0.490507,
+        0.053421,
+        0.838194
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "painel-lado",
+      "nome": "Painel lateral",
+      "aliases": [],
+      "triangulos": 467395,
+      "etapaMontagem": 2,
+      "centro": [
+        -0.213586,
+        0.011718,
+        -0.228896
+      ],
+      "vetorExplosao": [
+        -0.139173,
+        0.049342,
+        -0.961362
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "sisal-frente",
+      "nome": "Sisal frontal",
+      "aliases": [],
+      "triangulos": 115073,
+      "etapaMontagem": 3,
+      "centro": [
+        -0.23681,
+        -0.023991,
+        0.065892
+      ],
+      "vetorExplosao": [
+        -0.605894,
+        -0.258293,
+        0.71568
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1403854,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "versao": 1,
+  "projeto": "A2",
+  "slug": "escada-canto",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "ec5935b97360934df35750fbc85cb6385e6b7082b9f030cca6ba3a7dcc57ceeb",
+    "bytes": 42609976,
+    "vertices": 762695,
+    "triangulos": 1479762,
+    "componentesConectados": 146
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    0.003657,
+    0,
+    -0.00392
+  ],
+  "tamanhoModelo": [
+    0.670994,
+    0.343881,
+    0.999774
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "degrau-1",
+      "nome": "Degrau 1",
+      "aliases": [],
+      "triangulos": 232844,
+      "etapaMontagem": 1,
+      "centro": [
+        0.217128,
+        -0.100846,
+        0.016455
+      ],
+      "vetorExplosao": [
+        0.648454,
+        -0.306337,
+        0.061894
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "degrau-2",
+      "nome": "Degrau 2",
+      "aliases": [],
+      "triangulos": 390251,
+      "etapaMontagem": 2,
+      "centro": [
+        0.133091,
+        -0.033415,
+        -0.014951
+      ],
+      "vetorExplosao": [
+        0.694625,
+        -0.179325,
+        -0.059197
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "degrau-3",
+      "nome": "Degrau 3",
+      "aliases": [],
+      "triangulos": 403267,
+      "etapaMontagem": 3,
+      "centro": [
+        0.012972,
+        0.061465,
+        0.005971
+      ],
+      "vetorExplosao": [
+        0.106531,
+        0.702868,
+        0.113109
+      ]
+    },
+    {
+      "indice": 3,
+      "id": "degrau-4",
+      "nome": "Degrau 4",
+      "aliases": [],
+      "triangulos": 453400,
+      "etapaMontagem": 4,
+      "centro": [
+        -0.124116,
+        0.158164,
+        0.000929
+      ],
+      "vetorExplosao": [
+        -0.452224,
+        0.559789,
+        0.017164
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1479762,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

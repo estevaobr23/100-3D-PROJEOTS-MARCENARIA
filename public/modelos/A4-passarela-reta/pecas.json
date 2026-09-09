@@ -1,0 +1,99 @@
+{
+  "versao": 1,
+  "projeto": "A4",
+  "slug": "passarela-reta",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "3e3513fd59c2d3d4ad93e55291b60d14a6bb50d79e240f37e0d5d88db6c563e2",
+    "bytes": 36855940,
+    "vertices": 655957,
+    "triangulos": 1284260,
+    "componentesConectados": 55
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      1
+    ]
+  },
+  "centroModelo": [
+    0,
+    0,
+    0
+  ],
+  "tamanhoModelo": [
+    0.183336,
+    0.084695,
+    1
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "plataforma",
+      "nome": "Passarela",
+      "aliases": [],
+      "triangulos": 741151,
+      "etapaMontagem": 1,
+      "centro": [
+        0.037802,
+        0.02205,
+        -0.00978
+      ],
+      "vetorExplosao": [
+        0.606957,
+        0.354042,
+        -0.157028
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "suporte-e",
+      "nome": "Suporte esquerdo",
+      "aliases": [],
+      "triangulos": 297868,
+      "etapaMontagem": 2,
+      "centro": [
+        -0.050528,
+        0.025503,
+        0.253416
+      ],
+      "vetorExplosao": [
+        -0.140107,
+        0.070715,
+        0.702687
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "suporte-d",
+      "nome": "Suporte direito",
+      "aliases": [],
+      "triangulos": 245241,
+      "etapaMontagem": 3,
+      "centro": [
+        -0.052626,
+        0.029293,
+        -0.276522
+      ],
+      "vetorExplosao": [
+        -0.133886,
+        0.074525,
+        -0.703506
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1284260,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

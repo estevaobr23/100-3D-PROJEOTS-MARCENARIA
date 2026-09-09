@@ -1,0 +1,135 @@
+{
+  "versao": 1,
+  "projeto": "D1",
+  "slug": "painel-modular-escalada",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "e97f03fad7ac033244e96dce3be3d106af3da2f93a10bbe81f12ec48c014b42d",
+    "bytes": 40023212,
+    "vertices": 716227,
+    "triangulos": 1394636,
+    "componentesConectados": 109
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      1
+    ]
+  },
+  "centroModelo": [
+    -0.008642,
+    0,
+    0.016626
+  ],
+  "tamanhoModelo": [
+    0.371386,
+    1,
+    0.483078
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "painel",
+      "nome": "Painel de fixação",
+      "aliases": [],
+      "triangulos": 212890,
+      "etapaMontagem": 1,
+      "centro": [
+        -0.143459,
+        -0.047202,
+        -0.120249
+      ],
+      "vetorExplosao": [
+        -0.490655,
+        -0.171787,
+        -0.498144
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "degrau-1",
+      "nome": "Degrau 1",
+      "aliases": [],
+      "triangulos": 260636,
+      "etapaMontagem": 2,
+      "centro": [
+        -0.002192,
+        -0.376866,
+        0.072603
+      ],
+      "vetorExplosao": [
+        0.012186,
+        -0.712085,
+        0.105768
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "degrau-2",
+      "nome": "Degrau 2",
+      "aliases": [],
+      "triangulos": 346677,
+      "etapaMontagem": 3,
+      "centro": [
+        -0.013747,
+        -0.127183,
+        0.015273
+      ],
+      "vetorExplosao": [
+        -0.028877,
+        -0.71938,
+        -0.00765
+      ]
+    },
+    {
+      "indice": 3,
+      "id": "degrau-3",
+      "nome": "Degrau 3",
+      "aliases": [],
+      "triangulos": 288373,
+      "etapaMontagem": 4,
+      "centro": [
+        0.006945,
+        0.128756,
+        0.052418
+      ],
+      "vetorExplosao": [
+        0.083409,
+        0.689025,
+        0.191541
+      ]
+    },
+    {
+      "indice": 4,
+      "id": "degrau-4",
+      "nome": "Degrau 4",
+      "aliases": [],
+      "triangulos": 286060,
+      "etapaMontagem": 5,
+      "centro": [
+        -0.030321,
+        0.388052,
+        0.021701
+      ],
+      "vetorExplosao": [
+        -0.040158,
+        0.718818,
+        0.0094
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1394636,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

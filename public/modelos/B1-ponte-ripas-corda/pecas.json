@@ -1,0 +1,207 @@
+{
+  "versao": 1,
+  "projeto": "B1",
+  "slug": "ponte-ripas-corda",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "bdce2b9558c8521442c6069f6d301620f6a1abcdc411285adbf49c5d56e6352b",
+    "bytes": 40934572,
+    "vertices": 727300,
+    "triangulos": 1401992,
+    "componentesConectados": 213
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    -0.007321,
+    0,
+    0.001398
+  ],
+  "tamanhoModelo": [
+    0.6004,
+    0.583465,
+    1.045485
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "ripa-1",
+      "nome": "Ripa 1",
+      "aliases": [],
+      "triangulos": 241664,
+      "etapaMontagem": 1,
+      "centro": [
+        0.083846,
+        -0.076452,
+        0.443899
+      ],
+      "vetorExplosao": [
+        0.149767,
+        -0.125594,
+        0.72693
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "ripa-2",
+      "nome": "Ripa 2",
+      "aliases": [],
+      "triangulos": 159735,
+      "etapaMontagem": 2,
+      "centro": [
+        0.100932,
+        -0.249432,
+        0.357289
+      ],
+      "vetorExplosao": [
+        0.181942,
+        -0.419222,
+        0.598148
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "ripa-3",
+      "nome": "Ripa 3",
+      "aliases": [],
+      "triangulos": 127794,
+      "etapaMontagem": 3,
+      "centro": [
+        0.060744,
+        -0.265042,
+        0.229018
+      ],
+      "vetorExplosao": [
+        0.143946,
+        -0.560521,
+        0.48138
+      ]
+    },
+    {
+      "indice": 3,
+      "id": "ripa-4",
+      "nome": "Ripa 4",
+      "aliases": [],
+      "triangulos": 122654,
+      "etapaMontagem": 4,
+      "centro": [
+        0.0271,
+        -0.270566,
+        0.112016
+      ],
+      "vetorExplosao": [
+        0.088034,
+        -0.691985,
+        0.28291
+      ]
+    },
+    {
+      "indice": 4,
+      "id": "ripa-5",
+      "nome": "Ripa 5",
+      "aliases": [],
+      "triangulos": 122192,
+      "etapaMontagem": 5,
+      "centro": [
+        0.00972,
+        -0.271434,
+        -0.003177
+      ],
+      "vetorExplosao": [
+        0.047158,
+        -0.751164,
+        -0.012661
+      ]
+    },
+    {
+      "indice": 5,
+      "id": "ripa-6",
+      "nome": "Ripa 6",
+      "aliases": [],
+      "triangulos": 124038,
+      "etapaMontagem": 6,
+      "centro": [
+        -0.012642,
+        -0.266933,
+        -0.11495
+      ],
+      "vetorExplosao": [
+        -0.013754,
+        -0.689934,
+        -0.300722
+      ]
+    },
+    {
+      "indice": 6,
+      "id": "ripa-7",
+      "nome": "Ripa 7",
+      "aliases": [],
+      "triangulos": 136682,
+      "etapaMontagem": 7,
+      "centro": [
+        -0.051687,
+        -0.261691,
+        -0.239547
+      ],
+      "vetorExplosao": [
+        -0.093162,
+        -0.549514,
+        -0.505951
+      ]
+    },
+    {
+      "indice": 7,
+      "id": "ripa-8",
+      "nome": "Ripa 8",
+      "aliases": [],
+      "triangulos": 118030,
+      "etapaMontagem": 8,
+      "centro": [
+        -0.087255,
+        -0.252963,
+        -0.359739
+      ],
+      "vetorExplosao": [
+        -0.134277,
+        -0.424938,
+        -0.606653
+      ]
+    },
+    {
+      "indice": 8,
+      "id": "ripa-9",
+      "nome": "Ripa 9",
+      "aliases": [],
+      "triangulos": 249203,
+      "etapaMontagem": 9,
+      "centro": [
+        -0.093443,
+        -0.076914,
+        -0.439379
+      ],
+      "vetorExplosao": [
+        -0.142277,
+        -0.127065,
+        -0.728178
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1401992,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

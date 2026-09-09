@@ -1,0 +1,135 @@
+{
+  "versao": 1,
+  "projeto": "L2",
+  "slug": "comedouro-duplo",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "a7916806bc1d1befef9475da525766cf87bba20b42d16e3a029f463f3dd4e6e6",
+    "bytes": 40305048,
+    "vertices": 715217,
+    "triangulos": 1392012,
+    "componentesConectados": 125
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    0.000554,
+    0,
+    0.000243
+  ],
+  "tamanhoModelo": [
+    0.899782,
+    0.467341,
+    1.123856
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "tampo",
+      "nome": "Tampo",
+      "aliases": [],
+      "triangulos": 442465,
+      "etapaMontagem": 1,
+      "centro": [
+        -0.026037,
+        0.200536,
+        -0.011518
+      ],
+      "vetorExplosao": [
+        -0.106185,
+        0.800803,
+        -0.046964
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "pe-e",
+      "nome": "Pé esquerdo",
+      "aliases": [],
+      "triangulos": 169288,
+      "etapaMontagem": 2,
+      "centro": [
+        -0.00319,
+        0.054373,
+        0.399796
+      ],
+      "vetorExplosao": [
+        -0.007514,
+        0.109107,
+        0.801752
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "pe-d",
+      "nome": "Pé direito",
+      "aliases": [],
+      "triangulos": 165442,
+      "etapaMontagem": 3,
+      "centro": [
+        0.007798,
+        0.056859,
+        -0.37103
+      ],
+      "vetorExplosao": [
+        0.015603,
+        0.12247,
+        -0.799702
+      ]
+    },
+    {
+      "indice": 3,
+      "id": "pote-1",
+      "nome": "Pote 1",
+      "aliases": [],
+      "triangulos": 308525,
+      "etapaMontagem": 4,
+      "centro": [
+        0.203272,
+        0.103604,
+        0.255255
+      ],
+      "vetorExplosao": [
+        0.479848,
+        0.245237,
+        0.603632
+      ]
+    },
+    {
+      "indice": 4,
+      "id": "pote-2",
+      "nome": "Pote 2",
+      "aliases": [],
+      "triangulos": 306292,
+      "etapaMontagem": 5,
+      "centro": [
+        -0.169736,
+        0.101142,
+        -0.257597
+      ],
+      "vetorExplosao": [
+        -0.423814,
+        0.251718,
+        -0.641706
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1392012,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

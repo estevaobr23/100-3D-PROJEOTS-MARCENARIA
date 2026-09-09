@@ -1,0 +1,117 @@
+{
+  "versao": 1,
+  "projeto": "C1",
+  "slug": "poste-ligacao-dois-niveis",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "dd24a3af025daee5e6f35af3e4387e1d3f324c21be034cee17e253d84db0c5c1",
+    "bytes": 42541308,
+    "vertices": 754705,
+    "triangulos": 1475876,
+    "componentesConectados": 96
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      0,
+      1,
+      2
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    0.00164,
+    0,
+    -0.001609
+  ],
+  "tamanhoModelo": [
+    0.70551,
+    1,
+    0.704587
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "base",
+      "nome": "Placa inferior",
+      "aliases": [],
+      "triangulos": 228540,
+      "etapaMontagem": 1,
+      "centro": [
+        0.003662,
+        -0.48219,
+        -0.004583
+      ],
+      "vetorExplosao": [
+        0.003019,
+        -0.71998,
+        -0.004441
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "poste",
+      "nome": "Poste estrutural",
+      "aliases": [],
+      "triangulos": 823054,
+      "etapaMontagem": 2,
+      "centro": [
+        0.003563,
+        -0.031371,
+        0.004695
+      ],
+      "vetorExplosao": [
+        0.043189,
+        -0.704618,
+        0.141591
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "sisal",
+      "nome": "Revestimento de sisal",
+      "aliases": [],
+      "triangulos": 236869,
+      "etapaMontagem": 3,
+      "centro": [
+        0.002339,
+        0.154819,
+        -0.00355
+      ],
+      "vetorExplosao": [
+        0.003251,
+        0.719936,
+        -0.009025
+      ]
+    },
+    {
+      "indice": 3,
+      "id": "topo",
+      "nome": "Placa superior",
+      "aliases": [],
+      "triangulos": 187413,
+      "etapaMontagem": 4,
+      "centro": [
+        -0.009351,
+        0.485987,
+        -0.00552
+      ],
+      "vetorExplosao": [
+        -0.016278,
+        0.719793,
+        -0.005793
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1475876,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

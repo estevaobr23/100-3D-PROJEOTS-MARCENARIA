@@ -1,0 +1,99 @@
+{
+  "versao": 1,
+  "projeto": "G1",
+  "slug": "plataforma-descanso-simples",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "cb3c7b8174938c2d3e512384c96d5506c2deda8670afd557c84b7d58013fce66",
+    "bytes": 42665820,
+    "vertices": 760741,
+    "triangulos": 1488780,
+    "componentesConectados": 80
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      1
+    ]
+  },
+  "centroModelo": [
+    0.000549,
+    0,
+    -0.000262
+  ],
+  "tamanhoModelo": [
+    0.908252,
+    0.213103,
+    1.10654
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "plataforma",
+      "nome": "Plataforma",
+      "aliases": [],
+      "triangulos": 1156476,
+      "etapaMontagem": 1,
+      "centro": [
+        0.070043,
+        0.069707,
+        0.072288
+      ],
+      "vetorExplosao": [
+        0.452787,
+        0.454178,
+        0.472706
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "suporte-e",
+      "nome": "Suporte esquerdo",
+      "aliases": [],
+      "triangulos": 29137,
+      "etapaMontagem": 2,
+      "centro": [
+        -0.164477,
+        0.105755,
+        0.009529
+      ],
+      "vetorExplosao": [
+        -0.669955,
+        0.429332,
+        0.039749
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "suporte-d",
+      "nome": "Suporte direito",
+      "aliases": [],
+      "triangulos": 303167,
+      "etapaMontagem": 3,
+      "centro": [
+        -0.279824,
+        0.055123,
+        -0.248144
+      ],
+      "vetorExplosao": [
+        -0.590509,
+        0.116097,
+        -0.522078
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1488780,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

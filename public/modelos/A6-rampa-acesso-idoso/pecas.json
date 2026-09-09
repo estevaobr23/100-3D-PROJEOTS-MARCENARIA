@@ -1,0 +1,99 @@
+{
+  "versao": 1,
+  "projeto": "A6",
+  "slug": "rampa-acesso-idoso",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "f787d73f62a6c5746e35e7b1a645e378f6c20c96fd08c87ae97b4803cc2133dc",
+    "bytes": 41919972,
+    "vertices": 745851,
+    "triangulos": 1452092,
+    "componentesConectados": 95
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    0.000497,
+    0,
+    -0.00152
+  ],
+  "tamanhoModelo": [
+    1.055306,
+    0.324383,
+    0.615093
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "base",
+      "nome": "Base de apoio",
+      "aliases": [],
+      "triangulos": 26833,
+      "etapaMontagem": 1,
+      "centro": [
+        0.4037,
+        -0.145315,
+        0.121055
+      ],
+      "vetorExplosao": [
+        0.68726,
+        -0.24769,
+        0.208929
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "rampa",
+      "nome": "Painel inclinado",
+      "aliases": [],
+      "triangulos": 1207124,
+      "etapaMontagem": 2,
+      "centro": [
+        -0.007978,
+        0.00491,
+        0.00376
+      ],
+      "vetorExplosao": [
+        -0.578736,
+        0.33531,
+        0.360499
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "revestimento",
+      "nome": "Faixa de sisal",
+      "aliases": [],
+      "triangulos": 218135,
+      "etapaMontagem": 3,
+      "centro": [
+        -0.162146,
+        0.052108,
+        -0.097832
+      ],
+      "vetorExplosao": [
+        -0.630278,
+        0.201928,
+        -0.373232
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1452092,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}

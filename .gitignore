@@ -1,0 +1,39 @@
+node_modules/
+.next/
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+
+# Segredos e credenciais (só .env.example vai pro repo)
+.env
+.env.local
+.env.*.local
+.tripo/
+.tmp-*
+_tmp-*
+_render-glb-tmp.mjs
+_glktmp
+
+# Backups e rascunhos internos
+*.bak
+*.bak2
+*.bak-pre-resumo
+contexto.md.bak*
+gpt.md.bak*
+
+# Tooling de análise de vídeo (não faz parte do app da área de membros)
+analise-videos/
+
+# Ferramentas/temporários de otimização e testes
+/_glbtmp/
+/scratchpad/
+
+# --- Modelos 3D: o que o app usa vai pro repo (model.glb otimizado,
+#     preview.png, pecas.bin/json). O resto é backup/saída bruta local. ---
+# Backups dos GLBs crus do Tripo (~40 MB cada). Preservados no disco, fora do git.
+public/modelos/**/model.orig.glb
+# Saída bruta do CLI do Tripo (imagem de referência e GLB não-otimizado).
+public/modelos/**/referencia/
+public/modelos/**/modelo/
+public/modelos/**/tripo-out/
+public/modelos/**/rendered_image.webp

@@ -1,0 +1,135 @@
+{
+  "versao": 1,
+  "projeto": "E4",
+  "slug": "nicho-tunel-saida-topo",
+  "origem": {
+    "arquivo": "model.glb",
+    "sha256": "42fab5a523e7d8c019ff8076aaaf6fea465231290526050881df4330a1bc0ca6",
+    "bytes": 41012840,
+    "vertices": 730587,
+    "triangulos": 1414110,
+    "componentesConectados": 192
+  },
+  "mapa": "pecas.bin",
+  "metodo": "componentes-conectados-com-sementes-tecnicas",
+  "status": "gerada-localmente",
+  "eixos": {
+    "permutacao": [
+      2,
+      1,
+      0
+    ],
+    "sinais": [
+      -1,
+      1,
+      -1
+    ]
+  },
+  "centroModelo": [
+    -0.000162,
+    0,
+    -0.000124
+  ],
+  "tamanhoModelo": [
+    1.026007,
+    0.684363,
+    1.180424
+  ],
+  "partes": [
+    {
+      "indice": 0,
+      "id": "piso",
+      "nome": "Piso",
+      "aliases": [],
+      "triangulos": 266068,
+      "etapaMontagem": 1,
+      "centro": [
+        -0.078419,
+        -0.213486,
+        -0.003685
+      ],
+      "vetorExplosao": [
+        -0.292476,
+        -0.797885,
+        -0.013311
+      ]
+    },
+    {
+      "indice": 1,
+      "id": "fundo",
+      "nome": "Painel de fundo",
+      "aliases": [],
+      "triangulos": 239121,
+      "etapaMontagem": 2,
+      "centro": [
+        0.348016,
+        -0.021035,
+        -0.095445
+      ],
+      "vetorExplosao": [
+        0.818352,
+        -0.04944,
+        -0.224042
+      ]
+    },
+    {
+      "indice": 2,
+      "id": "lateral-esquerda",
+      "nome": "Lateral esquerda",
+      "aliases": [],
+      "triangulos": 235969,
+      "etapaMontagem": 3,
+      "centro": [
+        -0.148007,
+        -0.012227,
+        0.419857
+      ],
+      "vetorExplosao": [
+        -0.282107,
+        -0.023331,
+        0.80138
+      ]
+    },
+    {
+      "indice": 3,
+      "id": "lateral-direita",
+      "nome": "Lateral direita",
+      "aliases": [],
+      "triangulos": 171740,
+      "etapaMontagem": 4,
+      "centro": [
+        0.010609,
+        -0.006525,
+        -0.486099
+      ],
+      "vetorExplosao": [
+        0.01883,
+        -0.011407,
+        -0.84962
+      ]
+    },
+    {
+      "indice": 4,
+      "id": "teto",
+      "nome": "Teto",
+      "aliases": [],
+      "triangulos": 501212,
+      "etapaMontagem": 5,
+      "centro": [
+        -0.079809,
+        0.285342,
+        0.004727
+      ],
+      "vetorExplosao": [
+        -0.228466,
+        0.818504,
+        0.013913
+      ]
+    }
+  ],
+  "integridade": {
+    "triangulosClassificados": 1414110,
+    "triangulosSemPeca": 0,
+    "triangulosDuplicados": 0
+  }
+}
