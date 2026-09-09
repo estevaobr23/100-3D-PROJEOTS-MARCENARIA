@@ -45,6 +45,24 @@ function nomeDimensoes(peca: PecaTecnica, unidade: Unidade) {
   return itens.join(" × ");
 }
 
+function linhasDimensoes(peca: PecaTecnica, unidade: Unidade) {
+  const fator = unidade === "cm" ? 0.1 : 1;
+  const valor = (numero: number) => `${(numero * fator).toLocaleString("pt-BR")} ${unidade}`;
+  return [
+    { sigla: "C", nome: "Comprimento", valor: peca.dimensoes.comprimento },
+    { sigla: "L", nome: "Largura", valor: peca.dimensoes.largura },
+    { sigla: "E", nome: "Espessura", valor: peca.dimensoes.espessura },
+    { sigla: "Ø", nome: "Diâmetro", valor: peca.dimensoes.diametro },
+  ].filter((item): item is { sigla: string; nome: string; valor: number } => typeof item.valor === "number")
+    .map((item) => ({ ...item, exibicao: valor(item.valor) }));
+}
+
+function moeda(valor: number | null | undefined) {
+  return valor === null || valor === undefined
+    ? "—"
+    : valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+}
+
 function CampoCusto({
   id,
   label,
@@ -83,7 +101,7 @@ export function ExperienciaTecnica({ projeto }: { projeto: ProjetoTecnico }) {
   const [ocultas, setOcultas] = useState<Set<string>>(new Set());
   const [isolada, setIsolada] = useState<string | null>(null);
   const [transparentes, setTransparentes] = useState(false);
-  const [mostrarMedidas, setMostrarMedidas] = useState(false);
+  const [mostrarIdentificadores, setMostrarIdentificadores] = useState(true);
   const [unidade, setUnidade] = useState<Unidade>("cm");
   const [explosao, setExplosao] = useState(0.62);
   const [etapa, setEtapa] = useState(1);
@@ -171,14 +189,24 @@ export function ExperienciaTecnica({ projeto }: { projeto: ProjetoTecnico }) {
     setPrecos((atuais) => ({ ...atuais, [id]: valor }));
   }
 
+  function abrirPeca(id: string) {
+    setModo("pecas");
+    setSelecionada(id);
+    setIsolada(null);
+    setTransparentes(false);
+    window.requestAnimationFrame(() => {
+      document.querySelector(".tecArea")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
   function telaCheia() {
     setTelaCheiaAtiva((ativa) => !ativa);
   }
 
   function exportarLista() {
     const linhas = [
-      ["Código", "Peça", "Quantidade", "Material", "Dimensões sugeridas (cm)"],
-      ...projeto.pecas.map((peca) => [peca.codigo, peca.nome, String(peca.quantidade), peca.material, nomeDimensoes(peca, "cm")]),
+      ["Identificação", "Código", "Peça", "Quantidade", "Material", "Dimensões sugeridas (cm)"],
+      ...projeto.pecas.map((peca) => [peca.identificador, peca.codigo, peca.nome, String(peca.quantidade), peca.material, nomeDimensoes(peca, "cm")]),
     ];
     const csv = linhas.map((linha) => linha.map((valor) => `"${valor.replaceAll('"', '""')}"`).join(";")).join("\n");
     const url = URL.createObjectURL(new Blob(["\uFEFF", csv], { type: "text/csv;charset=utf-8" }));
@@ -220,8 +248,8 @@ export function ExperienciaTecnica({ projeto }: { projeto: ProjetoTecnico }) {
             <div className="tecAcoes">
               {modo !== "visual" && (
                 <>
-                  <button type="button" aria-pressed={mostrarMedidas} onClick={() => setMostrarMedidas((valor) => !valor)}>
-                    {mostrarMedidas ? "Ocultar medidas" : "Mostrar medidas"}
+                  <button type="button" aria-pressed={mostrarIdentificadores} onClick={() => setMostrarIdentificadores((valor) => !valor)}>
+                    {mostrarIdentificadores ? "Ocultar identificadores" : "Mostrar identificadores"}
                   </button>
                   <button type="button" onClick={restaurarPecas} disabled={!ocultas.size && !isolada && !transparentes}>
                     Restaurar peças
@@ -264,16 +292,14 @@ export function ExperienciaTecnica({ projeto }: { projeto: ProjetoTecnico }) {
                       ocultas={ocultas}
                       isolada={isolada}
                       transparentes={transparentes}
-                      mostrarMedidas={mostrarMedidas}
-                      unidade={unidade}
+                      mostrarIdentificadores={mostrarIdentificadores}
                       reiniciarCamera={reiniciarCamera}
-                      nomeDimensoes={nomeDimensoes}
                       onSelecionar={setSelecionada}
                     />
                   </Suspense>
                 </Canvas>
                 <figcaption className="vis039Legenda">
-                  Modelo original segmentado · clique em uma peça para inspecionar
+                  Selecione uma letra ou clique diretamente na peça
                 </figcaption>
               </figure>
             )}
@@ -319,7 +345,10 @@ export function ExperienciaTecnica({ projeto }: { projeto: ProjetoTecnico }) {
           ) : pecaSelecionada ? (
             <div className="tecFichaPeca">
               <div className="tecFichaTopo">
-                <span>{pecaSelecionada.codigo}</span>
+                <div className="tecFichaIdentificacao">
+                  <span>{pecaSelecionada.identificador}</span>
+                  <small>{pecaSelecionada.codigo}</small>
+                </div>
                 <button type="button" aria-label="Fechar seleção" onClick={() => setSelecionada(null)}>×</button>
               </div>
               <h2>{pecaSelecionada.nome}</h2>
@@ -338,7 +367,15 @@ export function ExperienciaTecnica({ projeto }: { projeto: ProjetoTecnico }) {
                   </div>
                 </div>
                 <p className="tecMedidaSugerida">Medidas sugeridas para este modelo. Adapte ao ambiente, ao material e ao porte do gato antes da fabricação.</p>
-                <strong className="tecDimensaoValor">{nomeDimensoes(pecaSelecionada, unidade)}</strong>
+                <div className="tecMedidasGrade">
+                  {linhasDimensoes(pecaSelecionada, unidade).map((medida) => (
+                    <div className="tecMedidaItem" key={medida.sigla}>
+                      <span>{medida.sigla}</span>
+                      <small>{medida.nome}</small>
+                      <strong>{medida.exibicao}</strong>
+                    </div>
+                  ))}
+                </div>
               </div>
               <div className="tecCustoPeca">
                 <span>Custo desta peça</span>
@@ -357,12 +394,12 @@ export function ExperienciaTecnica({ projeto }: { projeto: ProjetoTecnico }) {
             <div className="tecVazio">
               <span className="tecIcone">+</span>
               <h2>Selecione uma peça</h2>
-              <p>Clique em qualquer componente do modelo original segmentado ou escolha uma peça na lista para abrir sua ficha individual.</p>
+              <p>Clique em uma letra no modelo, diretamente no componente ou escolha uma peça na legenda.</p>
               <ul>
                 {projeto.pecas.map((peca) => (
                   <li key={peca.id}>
                     <button type="button" onClick={() => setSelecionada(peca.id)}>
-                      <span>{peca.codigo}</span>{peca.nome}
+                      <span className="tecListaLetra">{peca.identificador}</span><strong>{peca.nome}</strong>
                     </button>
                   </li>
                 ))}
@@ -380,48 +417,72 @@ export function ExperienciaTecnica({ projeto }: { projeto: ProjetoTecnico }) {
       <section className="tecGradeInferior">
         <article className="tecCartao tecCalculadora">
           <header className="tecCartaoTopo">
-            <div><span className="projRotulo">ORÇAMENTO LOCAL</span><h2>Calculadora de custos</h2></div>
+            <div><span className="projRotulo">ORÇAMENTO INTERATIVO</span><h2>Calculadora de custos</h2><p>Preencha os valores praticados na sua região.</p></div>
             <span className="tecSalvo">Salvo neste navegador</span>
           </header>
-          <div className="tecCampos">
-            <CampoCusto id="madeiraM2" label="Madeira" sufixo="R$/m²" valor={precos.madeiraM2} onChange={atualizarPreco} />
-            <CampoCusto id="posteMetro" label="Sarrafo ou poste" sufixo="R$/m" valor={precos.posteMetro} onChange={atualizarPreco} />
-            <CampoCusto id="sisalMetro" label="Sisal" sufixo="R$/m" valor={precos.sisalMetro} onChange={atualizarPreco} />
-            <CampoCusto id="tecidoM2" label="Tecido" sufixo="R$/m²" valor={precos.tecidoM2} onChange={atualizarPreco} />
-            <CampoCusto id="ferragemUnidade" label="Ferragens" sufixo="R$/un" valor={precos.ferragemUnidade} onChange={atualizarPreco} />
-            <CampoCusto id="desperdicio" label="Desperdício" sufixo="%" valor={precos.desperdicio} onChange={atualizarPreco} />
-            <CampoCusto id="horas" label="Mão de obra" sufixo="horas" valor={precos.horas} onChange={atualizarPreco} />
-            <CampoCusto id="valorHora" label="Valor da hora" sufixo="R$/h" valor={precos.valorHora} onChange={atualizarPreco} />
-            <CampoCusto id="margem" label="Margem opcional" sufixo="%" valor={precos.margem} onChange={atualizarPreco} />
+          <div className="tecOrcamentoDestaque">
+            <span className="tecOrcamentoIcone">R$</span>
+            <div><small>PREÇO SUGERIDO</small><strong>{custos.disponivel ? moeda(custos.precoSugerido) : "Preencha os valores"}</strong></div>
+            <span className="tecOrcamentoStatus">Atualização automática</span>
           </div>
-          <div className="tecResultadoBloqueado">
-            <span>Madeira</span><strong>{!custos.disponivel ? "—" : custos.porGrupo.madeira?.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</strong>
-            <span>Sisal</span><strong>{!custos.disponivel ? "—" : custos.porGrupo.sisal?.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</strong>
-            <span>Tecido</span><strong>{!custos.disponivel ? "—" : custos.porGrupo.tecido?.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</strong>
-            <span>Ferragens</span><strong>{custos.ferragens === null ? "—" : custos.ferragens.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</strong>
-            <span>Subtotal de materiais</span><strong>{custos.materiais === null ? "—" : custos.materiais.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</strong>
-            <span>Desperdício</span><strong>{custos.desperdicio === null ? "—" : custos.desperdicio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</strong>
-            <span>Mão de obra cadastrada</span><strong>{custos.maoDeObra.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</strong>
-            <span className="tecTotal">Custo total e preço sugerido</span><strong className="tecTotal">{custos.disponivel ? custos.precoSugerido?.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) : "Verifique os dados"}</strong>
+          <div className="tecResumoCustos" aria-label="Resumo do orçamento">
+            <div><span>Materiais</span><strong>{moeda(custos.materiais)}</strong></div>
+            <div><span>Mão de obra</span><strong>{moeda(custos.maoDeObra)}</strong></div>
+            <div><span>Desperdício</span><strong>{moeda(custos.desperdicio)}</strong></div>
+          </div>
+          <div className="tecCustoSecoes">
+            <fieldset className="tecCustoGrupo">
+              <legend><span>01</span> Materiais</legend>
+              <div className="tecCampos">
+                <CampoCusto id="madeiraM2" label="Madeira" sufixo="R$/m²" valor={precos.madeiraM2} onChange={atualizarPreco} />
+                <CampoCusto id="posteMetro" label="Sarrafo ou poste" sufixo="R$/m" valor={precos.posteMetro} onChange={atualizarPreco} />
+                <CampoCusto id="sisalMetro" label="Sisal" sufixo="R$/m" valor={precos.sisalMetro} onChange={atualizarPreco} />
+                <CampoCusto id="tecidoM2" label="Tecido" sufixo="R$/m²" valor={precos.tecidoM2} onChange={atualizarPreco} />
+                <CampoCusto id="ferragemUnidade" label="Ferragens" sufixo="R$/un" valor={precos.ferragemUnidade} onChange={atualizarPreco} />
+                <CampoCusto id="desperdicio" label="Desperdício" sufixo="%" valor={precos.desperdicio} onChange={atualizarPreco} />
+              </div>
+            </fieldset>
+            <fieldset className="tecCustoGrupo">
+              <legend><span>02</span> Produção e margem</legend>
+              <div className="tecCampos tecCamposProducao">
+                <CampoCusto id="horas" label="Tempo de produção" sufixo="horas" valor={precos.horas} onChange={atualizarPreco} />
+                <CampoCusto id="valorHora" label="Valor da hora" sufixo="R$/h" valor={precos.valorHora} onChange={atualizarPreco} />
+                <CampoCusto id="margem" label="Margem desejada" sufixo="%" valor={precos.margem} onChange={atualizarPreco} />
+              </div>
+            </fieldset>
+          </div>
+          <div className="tecComposicao">
+            <div className="tecComposicaoTopo"><strong>Composição estimada</strong><span>Custo total {moeda(custos.total)}</span></div>
+            <ul>
+              <li><span><i className="tecCor tecCorMadeira" />Madeira</span><strong>{moeda(custos.porGrupo.madeira)}</strong></li>
+              <li><span><i className="tecCor tecCorSisal" />Sisal</span><strong>{moeda(custos.porGrupo.sisal)}</strong></li>
+              <li><span><i className="tecCor tecCorTecido" />Tecido</span><strong>{moeda(custos.porGrupo.tecido)}</strong></li>
+              <li><span><i className="tecCor tecCorFerragem" />Ferragens</span><strong>{moeda(custos.ferragens)}</strong></li>
+            </ul>
           </div>
         </article>
 
-        <article className="tecCartao">
+        <article className="tecCartao tecMateriais">
           <header className="tecCartaoTopo">
-            <div><span className="projRotulo">PROJETO {projeto.codigo}</span><h2>Lista de materiais</h2></div>
+            <div><span className="projRotulo">PEÇAS DO PROJETO {projeto.codigo}</span><h2>Lista de materiais</h2><p>Selecione uma peça para encontrá-la no modelo 3D.</p></div>
             <span className="tecContagem">{projeto.pecas.length} peças</span>
           </header>
-          <div className="tecTabelaWrap">
-            <table className="tecTabela">
-              <thead><tr><th>Código</th><th>Peça</th><th>Qtd.</th><th>Material</th><th>Dimensões</th></tr></thead>
-              <tbody>
-                {projeto.pecas.map((peca) => (
-                  <tr key={peca.id}>
-                    <td>{peca.codigo}</td><td>{peca.nome}</td><td>{peca.quantidade}</td><td>{peca.material}</td><td>{nomeDimensoes(peca, "cm")}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="tecMateriaisGrade">
+            {projeto.pecas.map((peca) => (
+              <article className="tecMaterialCard" key={peca.id}>
+                <header>
+                  <span className="tecMaterialLetra">{peca.identificador}</span>
+                  <div><small>{peca.codigo}</small><h3>{peca.nome}</h3></div>
+                  <span className="tecMaterialQtd">{peca.quantidade} un.</span>
+                </header>
+                <p>{peca.material}</p>
+                <div className="tecMaterialMedida"><span>Dimensões sugeridas</span><strong>{nomeDimensoes(peca, "cm")}</strong></div>
+                <footer>
+                  <span><small>Custo estimado</small><strong>{moeda(custos.porPeca[peca.id])}</strong></span>
+                  <button type="button" onClick={() => abrirPeca(peca.id)}>Ver no 3D <span aria-hidden>↗</span></button>
+                </footer>
+              </article>
+            ))}
           </div>
           <div className="tecFerragens">
             <h3>Ferragens sugeridas</h3>

@@ -801,6 +801,89 @@ Contrato obrigatório daqui em diante:
 - qualquer troca de `model.glb` exige regenerar e auditar seu mapa local;
 - `scripts/validar-projetos-tecnicos.mjs` deve impedir o retorno do motor genérico.
 
+### Identificação de peças por letras (09/09/2026)
+
+As antigas etiquetas flutuantes com código completo e todas as dimensões foram
+substituídas por marcadores circulares de letras. Cada `PecaTecnica` possui o
+campo estável `identificador` (`A`, `B`, `C` etc.) criado no catálogo comum.
+
+Nos modos Peças, Explodida e Montagem:
+
+- os marcadores ficam visíveis por padrão e podem ser ocultados pela barra;
+- clicar na letra ou na própria geometria seleciona a peça;
+- o marcador acompanha exatamente o deslocamento da peça na explosão;
+- `Html` com `distanceFactor` faz o marcador reagir ao zoom da câmera;
+- quando várias peças técnicas compartilham a mesma parte física do GLB, suas
+  letras aparecem juntas e continuam abrindo fichas individuais;
+- somente a letra aparece sobre o 3D; as dimensões ficam na ficha lateral.
+
+A ficha lateral mostra identificação, código interno, nome, material e cards
+separados de comprimento, largura, espessura ou diâmetro. A unidade continua
+alternável entre cm e mm, com cm como padrão. A lista de materiais e o CSV
+também carregam a letra, sem remover o código técnico original.
+
+### PROBLEMA ATUAL — associar exatamente cada letra à peça correta
+
+O sistema de letras e a ficha de medidas estão implementados, mas ainda não
+existe correspondência semântica confiável entre cada letra e a peça física
+correta do GLB. Os modelos do Tripo chegam como uma malha única, sem nomes de
+componentes como base, lateral, teto, poste ou plataforma.
+
+O gerador local atual separa a malha por componentes conectados e aproxima cada
+grupo da peça técnica mais próxima. Esse método preserva o formato original,
+mas não entende o significado do móvel. Por isso pode acontecer de:
+
+- a letra de uma peça aparecer sobre outra região do móvel;
+- clicar numa letra destacar uma parte diferente da esperada;
+- duas peças técnicas fundidas na malha receberem o mesmo grupo físico/alias;
+- peças visualmente separadas serem agrupadas sob uma única identificação;
+- o centro automático do grupo posicionar a letra num local pouco claro.
+
+O desafio para o próximo agente é criar uma forma confiável de mapear cada
+identificador (`A`, `B`, `C`...) à geometria correspondente, sem alterar a
+aparência do GLB e sem consumir créditos do Tripo. Pode ser necessário um modelo
+local de segmentação 3D, análise geométrica mais avançada ou uma ferramenta
+visual para o operador selecionar faces/componentes e atribuir manualmente a
+letra correta.
+
+Arquivos envolvidos:
+
+- `lib/projetos-tecnicos.ts`: peças, letras, nomes e medidas esperadas;
+- `scripts/gerar-segmentacoes-locais.mjs`: classificação automática atual;
+- `public/modelos/<projeto>/pecas.bin`: rótulo de cada triângulo;
+- `public/modelos/<projeto>/pecas.json`: manifesto, partes e aliases;
+- `app/projetos/modelo-segmentado.tsx`: aplica o mapa e mostra os marcadores;
+- `app/projetos/experiencia-tecnica.tsx`: seleção e ficha de medidas.
+
+Restrições importantes: manter os GLBs compactados atuais, preservar todos os
+triângulos, não voltar ao móvel genérico de caixas, não classificar milhões de
+faces no navegador e não usar a API paga do Tripo. A solução estará correta
+quando cada letra estiver visualmente presa à peça certa, clicar nela destacar
+somente essa peça e a ficha lateral mostrar as medidas correspondentes.
+
+### Redesign visual das páginas individuais (09/09/2026)
+
+O motor comum das 40 páginas foi reorganizado para deixar orçamento e materiais
+mais visuais, principalmente no celular.
+
+Em `app/projetos/experiencia-tecnica.tsx`, a calculadora agora possui:
+
+- preço sugerido em um painel de destaque;
+- resumo compacto de materiais, mão de obra e desperdício;
+- campos agrupados em “Materiais” e “Produção e margem”;
+- composição estimada por categoria com identificação por cor;
+- persistência dos valores no navegador mantida.
+
+A antiga tabela extensa virou uma grade de cards de materiais. Cada card mostra
+letra, código, nome, quantidade, material, dimensões, custo estimado e o botão
+“Ver no 3D”, que volta suavemente ao visualizador e seleciona a peça.
+
+`app/projetos/pagina-projeto.tsx` calcula os vizinhos pela ordem de
+`listaProjetosTecnicos`. Todas as páginas possuem acesso rápido ao próximo
+projeto no cabeçalho e navegação visual anterior/próximo no final, com retorno
+ao catálogo. Depois do último projeto, o próximo é o primeiro; antes do primeiro,
+o anterior é o último.
+
 ## Regras permanentes
 
 - Trabalhar por bloco. Não emendar um bloco no seguinte sem checkpoint humano.

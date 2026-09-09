@@ -9,8 +9,6 @@ import type { PecaTecnica, ProjetoTecnico, Vetor3 } from "@/lib/projetos-tecnico
 import { aplicarTomMadeira } from "./visualizador-modelo";
 
 type ModoTecnico = "pecas" | "explodida" | "montagem";
-type Unidade = "mm" | "cm";
-
 interface ParteManifesto {
   indice: number;
   id: string;
@@ -44,6 +42,7 @@ interface DadosMapa {
 
 interface ParteSegmentada {
   peca: PecaTecnica;
+  pecasIdentificadas: PecaTecnica[];
   ids: string[];
   objeto: THREE.Group;
   centro: THREE.Vector3;
@@ -179,6 +178,9 @@ function criarSegmentacao(
 
     return {
       peca,
+      pecasIdentificadas: [peca.id, ...parteMapa.aliases]
+        .map((id) => projeto.pecas.find((item) => item.id === id))
+        .filter((item): item is PecaTecnica => Boolean(item)),
       ids: [peca.id, ...parteMapa.aliases],
       objeto,
       centro: new THREE.Vector3(...parteMapa.centro),
@@ -226,38 +228,54 @@ function atualizarMateriais(objeto: THREE.Object3D, selecionada: boolean, atenua
 function ParteReal({
   parte,
   explosao,
-  selecionada,
+  idSelecionada,
   atenuada,
-  mostrarMedidas,
-  nomeDimensoes,
+  mostrarIdentificadores,
   onSelecionar,
 }: {
   parte: ParteSegmentada;
   explosao: number;
-  selecionada: boolean;
+  idSelecionada: string | null;
   atenuada: boolean;
-  mostrarMedidas: boolean;
-  nomeDimensoes: (peca: PecaTecnica) => string;
-  onSelecionar: () => void;
+  mostrarIdentificadores: boolean;
+  onSelecionar: (id: string) => void;
 }) {
+  const selecionada = idSelecionada !== null && parte.ids.includes(idSelecionada);
   useEffect(() => atualizarMateriais(parte.objeto, selecionada, atenuada), [atenuada, parte.objeto, selecionada]);
   const deslocamento = parte.vetorExplosao.clone().multiplyScalar(explosao);
-  const posicaoEtiqueta = parte.centro.clone().add(parte.vetorExplosao.clone().multiplyScalar(explosao + 0.1));
+  // O marcador está dentro do mesmo grupo que recebe a explosão. Somamos
+  // apenas um pequeno afastamento para ele não ficar enterrado na malha.
+  const posicaoEtiqueta = parte.centro.clone().add(parte.vetorExplosao.clone().normalize().multiplyScalar(0.075));
 
   return (
     <group
       position={deslocamento}
       onClick={(evento) => {
         evento.stopPropagation();
-        onSelecionar();
+        onSelecionar(parte.peca.id);
       }}
     >
       <primitive object={parte.objeto} dispose={null} />
-      {(mostrarMedidas || selecionada) && (
-        <Html center distanceFactor={3.4} position={posicaoEtiqueta}>
-          <span className={selecionada ? "tecEtiqueta tecEtiquetaAtiva" : "tecEtiqueta"}>
-            <strong>{parte.peca.codigo}</strong>
-            <span>{nomeDimensoes(parte.peca)}</span>
+      {(mostrarIdentificadores || selecionada) && (
+        <Html center sprite distanceFactor={2.9} position={posicaoEtiqueta}>
+          <span className="tecMarcadorGrupo" aria-label="Identificadores das peças">
+            {parte.pecasIdentificadas.map((peca) => (
+              <button
+                key={peca.id}
+                type="button"
+                className={idSelecionada === peca.id ? "tecMarcadorPeca tecMarcadorPecaAtivo" : "tecMarcadorPeca"}
+                aria-label={`Selecionar peça ${peca.identificador}: ${peca.nome}`}
+                aria-pressed={idSelecionada === peca.id}
+                title={`${peca.identificador} — ${peca.nome}`}
+                onPointerDown={(evento) => evento.stopPropagation()}
+                onClick={(evento) => {
+                  evento.stopPropagation();
+                  onSelecionar(peca.id);
+                }}
+              >
+                {peca.identificador}
+              </button>
+            ))}
           </span>
         </Html>
       )}
@@ -280,10 +298,8 @@ export function ModeloSegmentadoTecnico({
   ocultas,
   isolada,
   transparentes,
-  mostrarMedidas,
-  unidade,
+  mostrarIdentificadores,
   reiniciarCamera,
-  nomeDimensoes,
   onSelecionar,
 }: {
   projeto: ProjetoTecnico;
@@ -294,10 +310,8 @@ export function ModeloSegmentadoTecnico({
   ocultas: Set<string>;
   isolada: string | null;
   transparentes: boolean;
-  mostrarMedidas: boolean;
-  unidade: Unidade;
+  mostrarIdentificadores: boolean;
   reiniciarCamera: number;
-  nomeDimensoes: (peca: PecaTecnica, unidade: Unidade) => string;
   onSelecionar: (id: string | null) => void;
 }) {
   const { scene } = useGLTF(projeto.modeloVisual);
@@ -326,11 +340,10 @@ export function ModeloSegmentadoTecnico({
                 key={parte.peca.id}
                 parte={parte}
                 explosao={fatorExplosao}
-                selecionada={selecionaParte}
+                idSelecionada={selecionada}
                 atenuada={foraDoIsolamento || (transparentes && !selecionaParte)}
-                mostrarMedidas={mostrarMedidas}
-                nomeDimensoes={(peca) => nomeDimensoes(peca, unidade)}
-                onSelecionar={() => onSelecionar(parte.peca.id)}
+                mostrarIdentificadores={mostrarIdentificadores}
+                onSelecionar={onSelecionar}
               />
             );
           })}

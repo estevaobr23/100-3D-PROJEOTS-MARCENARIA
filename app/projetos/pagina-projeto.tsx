@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { obterProjetoTecnico } from "@/lib/projetos-tecnicos";
+import { listaProjetosTecnicos, obterProjetoTecnico } from "@/lib/projetos-tecnicos";
 import { ExperienciaTecnica } from "./experiencia-tecnica";
 
 export function criarMetadataProjeto(slug: string): Metadata {
@@ -17,6 +18,9 @@ export function PaginaProjeto({ slug }: { slug: string }) {
   const projeto = obterProjetoTecnico(slug);
   if (!projeto) notFound();
   const { largura, altura, profundidade } = projeto.dimensoesGerais;
+  const indice = listaProjetosTecnicos.findIndex((item) => item.slug === projeto.slug);
+  const anterior = listaProjetosTecnicos[(indice - 1 + listaProjetosTecnicos.length) % listaProjetosTecnicos.length];
+  const proximo = listaProjetosTecnicos[(indice + 1) % listaProjetosTecnicos.length];
 
   return (
     <main className="envolucro tecPagina">
@@ -33,6 +37,10 @@ export function PaginaProjeto({ slug }: { slug: string }) {
               peça, visualize a montagem e estime os custos do seu projeto.
             </p>
           </div>
+          <Link className="tecProximoTopo" href={`/projetos/${proximo.slug}`}>
+            <span><small>PRÓXIMO PROJETO</small><strong>{proximo.codigo}</strong></span>
+            <span aria-hidden>→</span>
+          </Link>
         </div>
         <div className="tecResumoProjeto" aria-label="Resumo do projeto">
           <span><small>MEDIDAS GERAIS SUGERIDAS</small><strong>{largura / 10} × {altura / 10} × {profundidade / 10} cm</strong></span>
@@ -53,6 +61,20 @@ export function PaginaProjeto({ slug }: { slug: string }) {
           {projeto.avisosSeguranca.map((aviso) => <li key={aviso}>{aviso}</li>)}
         </ul>
       </section>
+
+      <nav className="tecNavegacaoProjetos" aria-label="Navegação entre projetos">
+        <Link className="tecProjetoVizinho" href={`/projetos/${anterior.slug}`}>
+          <span className="tecProjetoSeta" aria-hidden>←</span>
+          <Image src={anterior.preview} alt="" width={96} height={72} />
+          <span><small>PROJETO ANTERIOR · {anterior.codigo}</small><strong>{anterior.nome}</strong></span>
+        </Link>
+        <Link className="tecTodosProjetos" href="/projetos"><span aria-hidden>⊞</span> Ver todos</Link>
+        <Link className="tecProjetoVizinho tecProjetoProximo" href={`/projetos/${proximo.slug}`}>
+          <span><small>PRÓXIMO PROJETO · {proximo.codigo}</small><strong>{proximo.nome}</strong></span>
+          <Image src={proximo.preview} alt="" width={96} height={72} />
+          <span className="tecProjetoSeta" aria-hidden>→</span>
+        </Link>
+      </nav>
     </main>
   );
 }

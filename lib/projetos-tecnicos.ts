@@ -17,6 +17,8 @@ export interface GeometriaVisual {
 
 export interface PecaTecnica {
   id: string;
+  /** Letra estável exibida nos marcadores e na ficha do projeto. */
+  identificador: string;
   codigo: string;
   nome: string;
   formato: FormatoPeca;
@@ -176,6 +178,17 @@ interface PecaBruta {
 const E = 18;
 const MADEIRA = "Compensado ou MDF de 18 mm";
 const ACABAMENTO = "Lixar, selar e aplicar acabamento atóxico";
+
+function letraIdentificacao(indice: number) {
+  let numero = indice + 1;
+  let resultado = "";
+  while (numero > 0) {
+    numero--;
+    resultado = String.fromCharCode(65 + (numero % 26)) + resultado;
+    numero = Math.floor(numero / 26);
+  }
+  return resultado;
+}
 
 function horizontal(id: string, nome: string, comprimento: number, largura: number, espessura: number, posicao: Vetor3, etapa: number, explosao: Vetor3 = [0, 1, 0], grupoCusto: GrupoCusto = "madeira", material = MADEIRA): PecaBruta {
   return { id, nome, formato: grupoCusto === "tecido" ? "tecido" : "painel", quantidade: 1, material, acabamento: ACABAMENTO, dimensoes: { comprimento, largura, espessura }, tamanho: [comprimento, espessura, largura], posicao, rotacao: [0, 0, 0], explosao, grupoCusto, etapa };
@@ -375,6 +388,7 @@ function criarProjeto(base: ProjetoBase): ProjetoTecnico {
   const escala = 2.45 / Math.max(largura, altura, profundidade);
   const pecas = brutas.map<PecaTecnica>((peca, indice) => ({
     id: peca.id,
+    identificador: letraIdentificacao(indice),
     codigo: `${base.codigo}-P${String(indice + 1).padStart(2, "0")}`,
     nome: peca.nome,
     formato: peca.formato,

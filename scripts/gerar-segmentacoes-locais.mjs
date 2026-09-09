@@ -3,9 +3,11 @@ import { readFile, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import * as THREE from "three";
+import { MeshoptDecoder } from "meshoptimizer";
 
 const raiz = resolve(process.cwd());
 const versao = 1;
+await MeshoptDecoder.ready;
 
 async function carregarProjetos() {
   const caminho = join(raiz, "lib", "projetos-tecnicos.ts");
@@ -30,21 +32,56 @@ function lerGlb(buffer) {
   return { json, binario };
 }
 
-function leitorAccessor(json, binario, indiceAccessor) {
+function decodificarBufferViews(json, binario) {
+  const resultado = new Map();
+  json.bufferViews.forEach((view, indice) => {
+    const extensao = view.extensions?.EXT_meshopt_compression;
+    if (!extensao) return;
+    const fonte = new Uint8Array(
+      binario.buffer,
+      binario.byteOffset + (extensao.byteOffset ?? 0),
+      extensao.byteLength,
+    );
+    const destino = new Uint8Array(extensao.count * extensao.byteStride);
+    MeshoptDecoder.decodeGltfBuffer(
+      destino,
+      extensao.count,
+      extensao.byteStride,
+      fonte,
+      extensao.mode,
+      extensao.filter,
+    );
+    resultado.set(indice, destino);
+  });
+  return resultado;
+}
+
+function leitorAccessor(json, binario, bufferViewsDecodificadas, indiceAccessor) {
   const accessor = json.accessors[indiceAccessor];
   const view = json.bufferViews[accessor.bufferView];
+  const viewDecodificada = bufferViewsDecodificadas.get(accessor.bufferView);
   const componentes = { SCALAR: 1, VEC2: 2, VEC3: 3, VEC4: 4 }[accessor.type];
-  const bytes = { 5121: 1, 5123: 2, 5125: 4, 5126: 4 }[accessor.componentType];
+  const bytes = { 5120: 1, 5121: 1, 5122: 2, 5123: 2, 5125: 4, 5126: 4 }[accessor.componentType];
   const stride = view.byteStride ?? componentes * bytes;
-  const inicio = (view.byteOffset ?? 0) + (accessor.byteOffset ?? 0);
-  const dados = new DataView(binario.buffer, binario.byteOffset, binario.byteLength);
+  const fonte = viewDecodificada ?? binario;
+  const inicio = (viewDecodificada ? 0 : (view.byteOffset ?? 0)) + (accessor.byteOffset ?? 0);
+  const dados = new DataView(fonte.buffer, fonte.byteOffset, fonte.byteLength);
   const lerComponente = (indice, componente = 0) => {
     const offset = inicio + indice * stride + componente * bytes;
-    if (accessor.componentType === 5121) return dados.getUint8(offset);
-    if (accessor.componentType === 5123) return dados.getUint16(offset, true);
-    if (accessor.componentType === 5125) return dados.getUint32(offset, true);
-    if (accessor.componentType === 5126) return dados.getFloat32(offset, true);
-    throw new Error(`componentType ${accessor.componentType} não suportado.`);
+    let valor;
+    if (accessor.componentType === 5120) valor = dados.getInt8(offset);
+    else if (accessor.componentType === 5121) valor = dados.getUint8(offset);
+    else if (accessor.componentType === 5122) valor = dados.getInt16(offset, true);
+    else if (accessor.componentType === 5123) valor = dados.getUint16(offset, true);
+    else if (accessor.componentType === 5125) valor = dados.getUint32(offset, true);
+    else if (accessor.componentType === 5126) valor = dados.getFloat32(offset, true);
+    else throw new Error(`componentType ${accessor.componentType} não suportado.`);
+    if (!accessor.normalized) return valor;
+    if (accessor.componentType === 5120) return Math.max(valor / 127, -1);
+    if (accessor.componentType === 5121) return valor / 255;
+    if (accessor.componentType === 5122) return Math.max(valor / 32767, -1);
+    if (accessor.componentType === 5123) return valor / 65535;
+    return valor;
   };
   return { count: accessor.count, componentes, ler: lerComponente };
 }
@@ -157,11 +194,11 @@ function transformarPonto(matriz, x, y, z) {
   ];
 }
 
-function analisarMalha(json, binario, indiceMalha = 0) {
+function analisarMalha(json, binario, bufferViewsDecodificadas, indiceMalha = 0) {
   const primitiva = json.meshes[indiceMalha]?.primitives?.[0];
   if (!primitiva || primitiva.mode !== undefined && primitiva.mode !== 4) throw new Error("Apenas primitivas triangulares são suportadas.");
-  const posicao = leitorAccessor(json, binario, primitiva.attributes.POSITION);
-  const indice = leitorAccessor(json, binario, primitiva.indices);
+  const posicao = leitorAccessor(json, binario, bufferViewsDecodificadas, primitiva.attributes.POSITION);
+  const indice = leitorAccessor(json, binario, bufferViewsDecodificadas, primitiva.indices);
   const matriz = matrizNo(json, indiceMalha);
   const posicoesMundo = new Float32Array(posicao.count * 3);
   const limite = new THREE.Box3();
@@ -316,10 +353,11 @@ async function processarProjeto(projeto) {
   const caminhoGlb = join(raiz, "public", ...relativo);
   const buffer = await readFile(caminhoGlb);
   const { json, binario } = lerGlb(buffer);
+  const bufferViewsDecodificadas = decodificarBufferViews(json, binario);
   if (json.meshes.length !== 1 || json.meshes[0].primitives.length !== 1) {
     throw new Error(`${projeto.codigo}: esperado um único mesh/primitiva.`);
   }
-  const analise = analisarMalha(json, binario);
+  const analise = analisarMalha(json, binario, bufferViewsDecodificadas);
   const mapa = gerarMapa(projeto, analise);
   const pasta = dirname(caminhoGlb);
   const manifesto = {

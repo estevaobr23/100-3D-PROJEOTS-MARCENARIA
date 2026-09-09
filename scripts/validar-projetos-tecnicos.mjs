@@ -1,17 +1,25 @@
 import { access, readFile, readdir } from "node:fs/promises";
 import { join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 
 const raiz = resolve(process.cwd());
 const fonte = await readFile(join(raiz, "lib", "projetos-tecnicos.ts"), "utf8");
 const catalogo = await readFile(join(raiz, "app", "projetos", "page.tsx"), "utf8");
 const experiencia = await readFile(join(raiz, "app", "projetos", "experiencia-tecnica.tsx"), "utf8");
 const segmentador = await readFile(join(raiz, "app", "projetos", "modelo-segmentado.tsx"), "utf8");
+const paginaProjeto = await readFile(join(raiz, "app", "projetos", "pagina-projeto.tsx"), "utf8");
+const { listaProjetosTecnicos } = await import(pathToFileURL(join(raiz, "lib", "projetos-tecnicos.ts")).href);
 const registros = [...fonte.matchAll(/codigo: "([^"]+)"[^\n]+slug: "([^"]+)"[^\n]+pasta: "([^"]+)"[^\n]+medidas: \[(\d+), (\d+), (\d+)\]/g)];
 
 const falhas = [];
 if (registros.length !== 40) falhas.push(`Esperados 40 projetos no catálogo técnico; encontrados ${registros.length}.`);
 if (new Set(registros.map((item) => item[1])).size !== registros.length) falhas.push("Há códigos técnicos duplicados.");
 if (new Set(registros.map((item) => item[2])).size !== registros.length) falhas.push("Há slugs técnicos duplicados.");
+for (const projeto of listaProjetosTecnicos) {
+  const identificadores = projeto.pecas.map((peca) => peca.identificador);
+  if (identificadores.some((item) => !/^[A-Z]+$/.test(item))) falhas.push(`${projeto.codigo}: identificador de peça inválido.`);
+  if (new Set(identificadores).size !== identificadores.length) falhas.push(`${projeto.codigo}: letras de identificação repetidas.`);
+}
 if (/Em validação 3D|Validação digital|Ficha em revisão/.test(catalogo)) falhas.push("O catálogo ainda contém badge de validação.");
 if (/requestFullscreen|exitFullscreen/.test(experiencia)) falhas.push("A Fullscreen API bloqueada voltou ao componente.");
 if (!experiencia.includes("ModeloSegmentadoTecnico")) falhas.push("O visualizador técnico não usa a segmentação local do GLB original.");
@@ -21,6 +29,12 @@ if (!segmentador.includes("pecas.json") || !segmentador.includes("pecas.bin")) f
 if (!segmentador.includes("new MeshBVH") || !experiencia.includes("firstHitOnly")) falhas.push("A seleção acelerada por BVH não está ativa.");
 if (/distanciaCaixa|escolherSinais|atribuicoes\[triangulo\]/.test(segmentador)) falhas.push("O classificador geométrico pesado voltou ao navegador.");
 if (/\bBounds\b|\bCenter\b/.test(segmentador)) falhas.push("O enquadramento voltou a depender das peças em movimento.");
+if (!fonte.includes("identificador: letraIdentificacao(indice)")) falhas.push("As peças não recebem letras estáveis no catálogo técnico.");
+if (!segmentador.includes("tecMarcadorPeca") || !segmentador.includes("peca.identificador")) falhas.push("Os marcadores de letras clicáveis não estão presentes no 3D.");
+if (!experiencia.includes("tecMedidasGrade") || !experiencia.includes("linhasDimensoes")) falhas.push("A ficha não apresenta as medidas em cards individuais.");
+if (!experiencia.includes("tecOrcamentoDestaque") || !experiencia.includes("tecCustoGrupo")) falhas.push("A calculadora visual compacta não está presente.");
+if (!experiencia.includes("tecMateriaisGrade") || !experiencia.includes("Ver no 3D")) falhas.push("A lista visual de materiais não está presente.");
+if (!paginaProjeto.includes("listaProjetosTecnicos") || !paginaProjeto.includes("tecProjetoProximo")) falhas.push("A navegação entre projetos não está conectada ao catálogo.");
 
 const recursosObrigatorios = ["Visual", "Peças", "Explodida", "Montagem", "Exportar lista em CSV", "Imprimir ficha", "Observações pessoais"];
 for (const recurso of recursosObrigatorios) {

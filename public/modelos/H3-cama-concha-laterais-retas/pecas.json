@@ -4,8 +4,8 @@
   "slug": "cama-concha-laterais-retas",
   "origem": {
     "arquivo": "model.glb",
-    "sha256": "40e366e8cdef25a44544a9cf33f1fb5d495ac41b13d60b6eafa90f7dfbbc1727",
-    "bytes": 40573756,
+    "sha256": "33940e6e45e924a76ca8fa78b2af652ccfd45e2b94d50de00c081cc7f660e2ef",
+    "bytes": 7198152,
     "vertices": 719784,
     "triangulos": 1403380,
     "componentesConectados": 123
@@ -26,14 +26,14 @@
     ]
   },
   "centroModelo": [
-    0.001054,
+    0.001055,
     0,
-    0.000224
+    0.000228
   ],
   "tamanhoModelo": [
-    0.726419,
-    0.588433,
-    0.999915
+    0.726459,
+    0.588458,
+    0.999924
   ],
   "partes": [
     {
@@ -44,14 +44,14 @@
       "triangulos": 133433,
       "etapaMontagem": 1,
       "centro": [
-        0.039347,
-        -0.255612,
+        0.039346,
+        -0.255615,
         0.006372
       ],
       "vetorExplosao": [
-        0.106631,
-        -0.711793,
-        0.017122
+        0.106629,
+        -0.7118,
+        0.017109
       ]
     },
     {
@@ -66,13 +66,13 @@
       "etapaMontagem": 4,
       "centro": [
         -0.026385,
-        -0.051672,
+        -0.051671,
         0.003486
       ],
       "vetorExplosao": [
-        -0.337131,
-        -0.634861,
-        0.040078
+        -0.337143,
+        -0.634865,
+        0.040027
       ]
     }
   ],
