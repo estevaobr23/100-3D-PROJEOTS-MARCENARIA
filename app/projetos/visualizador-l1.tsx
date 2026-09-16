@@ -5,7 +5,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_L1 = "/modelos/L1-comedouro-simples/model.glb";
+const MODELO_L1 = "/modelos/068-comedouro-elevado-simples/model.glb";
 
 export function VisualizadorL1() {
   return (

@@ -5,7 +5,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_013 = "/modelos/013-nicho-tunel-retangular/model.glb";
+const MODELO_013 = "/modelos/023-nicho-tunel-retangular/model.glb";
 
 export function Visualizador013() {
   return (

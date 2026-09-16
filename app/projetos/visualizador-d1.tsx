@@ -6,7 +6,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_D1 = "/modelos/D1-painel-modular-escalada/model.glb";
+const MODELO_D1 = "/modelos/065-painel-modular-de-escalada-com-apoios/model.glb";
 
 export function VisualizadorD1() {
   return (

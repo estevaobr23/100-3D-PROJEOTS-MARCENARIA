@@ -4,7 +4,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_035 = "/modelos/035-arranhador-cunha/model.glb";
+const MODELO_035 = "/modelos/015-arranhador-cunha/model.glb";
 
 export function Visualizador035() {
   return (

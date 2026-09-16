@@ -6,7 +6,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_NA2 = "/modelos/NA2-nicho-aberto-canto/model.glb";
+const MODELO_NA2 = "/modelos/022-nicho-aberto-de-canto/model.glb";
 
 export function VisualizadorNA2() {
   return (

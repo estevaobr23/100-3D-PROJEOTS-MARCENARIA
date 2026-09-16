@@ -5,7 +5,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_PLAY2 = "/modelos/PLAY2-circuito-com-nicho/model.glb";
+const MODELO_PLAY2 = "/modelos/081-circuito-com-nicho/model.glb";
 
 export function VisualizadorPlay2() {
   return (

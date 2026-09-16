@@ -37,3 +37,8 @@ public/modelos/**/referencia/
 public/modelos/**/modelo/
 public/modelos/**/tripo-out/
 public/modelos/**/rendered_image.webp
+
+# --- Fichas técnicas em PDF: só thumb/grande (WebP, leves) vão pro repo.
+#     Os originais A4 300dpi (~12 MB cada, ~1.2 GB no total) ficam só no
+#     disco local — servidos localmente, hospedagem/CDN a decidir depois. ---
+public/fichas/originais/

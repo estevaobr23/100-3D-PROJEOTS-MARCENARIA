@@ -5,7 +5,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_PLAY4 = "/modelos/PLAY4-circuito-arranhador/model.glb";
+const MODELO_PLAY4 = "/modelos/083-circuito-arranhador/model.glb";
 
 export function VisualizadorPlay4() {
   return (

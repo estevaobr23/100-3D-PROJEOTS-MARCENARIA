@@ -7,7 +7,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_PLAY1 = "/modelos/PLAY1-circuito-parede-simples/model.glb";
+const MODELO_PLAY1 = "/modelos/080-circuito-de-parede-simples/model.glb";
 
 export function VisualizadorPlay1() {
   return (

@@ -6,7 +6,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_G1 = "/modelos/G1-plataforma-descanso-simples/model.glb";
+const MODELO_G1 = "/modelos/037-prateleira-de-descanso-simples/model.glb";
 
 export function VisualizadorG1() {
   return (

@@ -6,7 +6,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_A5 = "/modelos/A5-passarela-recorte-reto/model.glb";
+const MODELO_A5 = "/modelos/055-passarela-com-recorte-reto/model.glb";
 
 export function VisualizadorA5() {
   return (

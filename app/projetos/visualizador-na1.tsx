@@ -6,7 +6,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_NA1 = "/modelos/NA1-nicho-aberto-parede/model.glb";
+const MODELO_NA1 = "/modelos/021-nicho-aberto-de-parede/model.glb";
 
 export function VisualizadorNA1() {
   return (

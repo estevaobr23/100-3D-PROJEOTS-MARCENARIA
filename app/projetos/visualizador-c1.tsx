@@ -6,7 +6,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_C1 = "/modelos/C1-poste-ligacao-dois-niveis/model.glb";
+const MODELO_C1 = "/modelos/064-poste-de-ligacao-entre-dois-niveis/model.glb";
 
 export function VisualizadorC1() {
   return (

@@ -4,7 +4,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_015 = "/modelos/015-nicho-tunel-entrada-angulo/model.glb";
+const MODELO_015 = "/modelos/024-nicho-tunel-com-entrada-em-angulo/model.glb";
 
 export function Visualizador015() {
   return (

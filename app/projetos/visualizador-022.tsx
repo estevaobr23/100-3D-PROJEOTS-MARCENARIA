@@ -6,7 +6,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_022 = "/modelos/022-casinha-suspensa-telhado/model.glb";
+const MODELO_022 = "/modelos/031-casinha-suspensa-com-telhado-de-dois-planos/model.glb";
 
 export function Visualizador022() {
   return (

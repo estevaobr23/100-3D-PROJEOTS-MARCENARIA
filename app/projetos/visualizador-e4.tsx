@@ -5,7 +5,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_E4 = "/modelos/E4-nicho-tunel-saida-topo/model.glb";
+const MODELO_E4 = "/modelos/025-nicho-tunel-com-saida-no-topo/model.glb";
 
 export function VisualizadorE4() {
   return (

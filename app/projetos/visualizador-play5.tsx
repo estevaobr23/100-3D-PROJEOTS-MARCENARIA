@@ -5,7 +5,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_PLAY5 = "/modelos/PLAY5-playground-familia/model.glb";
+const MODELO_PLAY5 = "/modelos/084-playground-familia/model.glb";
 
 export function VisualizadorPlay5() {
   return (

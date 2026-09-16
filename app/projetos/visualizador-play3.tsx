@@ -5,7 +5,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_PLAY3 = "/modelos/PLAY3-circuito-vertical-canto/model.glb";
+const MODELO_PLAY3 = "/modelos/082-circuito-vertical-de-canto/model.glb";
 
 export function VisualizadorPlay3() {
   return (

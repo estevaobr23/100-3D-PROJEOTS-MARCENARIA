@@ -4,7 +4,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_032 = "/modelos/032-painel-arranhador-canto/model.glb";
+const MODELO_032 = "/modelos/012-painel-arranhador-de-canto/model.glb";
 
 export function Visualizador032() {
   return (

@@ -7,7 +7,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_039 = "/modelos/039-arvore-compacta-2-niveis/model.glb";
+const MODELO_039 = "/modelos/001-arvore-compacta-de-2-niveis/model.glb";
 
 export function Visualizador039({ reiniciar = 0 }: { reiniciar?: number }) {
   return (

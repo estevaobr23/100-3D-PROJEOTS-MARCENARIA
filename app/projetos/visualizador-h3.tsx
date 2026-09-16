@@ -6,7 +6,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_H3 = "/modelos/H3-cama-concha-laterais-retas/model.glb";
+const MODELO_H3 = "/modelos/047-cama-concha-com-laterais-retas/model.glb";
 
 export function VisualizadorH3() {
   return (

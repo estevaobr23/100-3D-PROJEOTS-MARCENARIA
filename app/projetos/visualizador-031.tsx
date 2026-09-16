@@ -5,7 +5,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_031 = "/modelos/031-painel-arranhador-parede/model.glb";
+const MODELO_031 = "/modelos/011-painel-arranhador-de-parede/model.glb";
 
 export function Visualizador031() {
   return (

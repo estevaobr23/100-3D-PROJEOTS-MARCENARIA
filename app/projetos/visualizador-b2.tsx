@@ -6,7 +6,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_B2 = "/modelos/B2-ponte-tecido-reforcado/model.glb";
+const MODELO_B2 = "/modelos/060-ponte-flexivel-de-tecido-reforcado/model.glb";
 
 export function VisualizadorB2() {
   return (

@@ -6,7 +6,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_B1 = "/modelos/B1-ponte-ripas-corda/model.glb";
+const MODELO_B1 = "/modelos/059-ponte-suspensa-de-ripas-com-corda/model.glb";
 
 export function VisualizadorB1() {
   return (

@@ -6,7 +6,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_L4 = "/modelos/L4-estacao-compacta/model.glb";
+const MODELO_L4 = "/modelos/070-estacao-compacta-com-armazenamento/model.glb";
 
 export function VisualizadorL4() {
   return (

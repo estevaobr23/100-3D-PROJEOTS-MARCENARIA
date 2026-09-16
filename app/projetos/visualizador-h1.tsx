@@ -6,7 +6,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_H1 = "/modelos/H1-rede-suspensa-parede/model.glb";
+const MODELO_H1 = "/modelos/045-rede-suspensa-de-parede/model.glb";
 
 export function VisualizadorH1() {
   return (

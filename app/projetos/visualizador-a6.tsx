@@ -5,7 +5,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_A6 = "/modelos/A6-rampa-acesso-idoso/model.glb";
+const MODELO_A6 = "/modelos/056-rampa-de-acesso/model.glb";
 
 export function VisualizadorA6() {
   return (

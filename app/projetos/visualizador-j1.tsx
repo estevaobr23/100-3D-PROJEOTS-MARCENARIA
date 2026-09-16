@@ -6,7 +6,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_J1 = "/modelos/J1-protetor-canto-sofa/model.glb";
+const MODELO_J1 = "/modelos/076-protetor-de-canto-de-sofa-em-sisal/model.glb";
 
 export function VisualizadorJ1() {
   return (

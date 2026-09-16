@@ -6,7 +6,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_G2 = "/modelos/G2-plataforma-descanso-borda/model.glb";
+const MODELO_G2 = "/modelos/038-prateleira-de-descanso-com-borda/model.glb";
 
 export function VisualizadorG2() {
   return (

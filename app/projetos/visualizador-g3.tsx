@@ -7,7 +7,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_G3 = "/modelos/G3-mirante-de-janela/model.glb";
+const MODELO_G3 = "/modelos/039-mirante-de-janela/model.glb";
 
 export function VisualizadorG3() {
   return (

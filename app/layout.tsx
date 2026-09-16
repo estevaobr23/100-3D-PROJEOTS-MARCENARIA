@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Navegacao } from "./navegacao";
+import { Cabecalho } from "./cabecalho";
 import "./globals.css";
 import "./inicio.css";
 
@@ -19,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR">
       <body>
-        <header className="iniTopo">
+        <Cabecalho>
           <div className="envolucro iniTopoInterno">
             <a className="iniMarca" href="/">
               <span className="iniMarcaIcone" aria-hidden>
@@ -30,11 +31,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </span>
               <span className="iniMarcaTexto">
                 <span>Móveis para Gatos</span>
-                <span className="iniMarcaSub">PROJETOS 3D</span>
+                <span className="iniMarcaSub">FICHAS VISUAIS</span>
               </span>
             </a>
           </div>
-        </header>
+        </Cabecalho>
 
         <Navegacao />
         {children}

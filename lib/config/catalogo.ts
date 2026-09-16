@@ -50,9 +50,9 @@ export const CATALOGO: Produto[] = [
     // Mesma string usada no INSERT de `products` do banco novo (acervo-3d-membros).
     // Trocar por um id real da Cakto quando houver checkout.
     caktoProductId: "placeholder-sem-checkout",
-    titulo: "Acervo 3D — Móveis para Gatos",
+    titulo: "Biblioteca de Fichas Visuais — Móveis para Gatos",
     subtitulo:
-      "Modelos 3D navegáveis de móveis de marcenaria para gatos, com medidas sugeridas, peças, montagem e custos.",
+      "Fichas visuais A4 com medidas sugeridas, peças e montagem. Projetos selecionados também incluem visualização 3D interativa.",
     capa: "/modelos/039-arvore-compacta-2-niveis/preview.png",
     itens: [
       {

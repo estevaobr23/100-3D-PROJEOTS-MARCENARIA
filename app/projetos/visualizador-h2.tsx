@@ -6,7 +6,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_H2 = "/modelos/H2-cama-tecido-tenso/model.glb";
+const MODELO_H2 = "/modelos/046-cama-suspensa-em-tecido-tenso/model.glb";
 
 export function VisualizadorH2() {
   return (

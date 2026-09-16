@@ -5,7 +5,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_A1 = "/modelos/A1-degraus-escalonados-parede/model.glb";
+const MODELO_A1 = "/modelos/051-degraus-escalonados-de-parede/model.glb";
 
 export function VisualizadorA1() {
   return (

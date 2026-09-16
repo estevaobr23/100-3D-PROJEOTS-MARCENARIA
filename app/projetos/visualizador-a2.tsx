@@ -7,7 +7,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_A2 = "/modelos/A2-escada-canto/model.glb";
+const MODELO_A2 = "/modelos/052-escada-de-canto/model.glb";
 
 export function VisualizadorA2() {
   return (

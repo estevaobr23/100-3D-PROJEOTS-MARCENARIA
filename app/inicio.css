@@ -13,6 +13,14 @@ body:has(.loginPagina) > .iniRodape { display: none; }
   position: sticky;
   top: 0;
   z-index: 20;
+  transform: translateY(0);
+  transition: transform 0.22s ease;
+}
+/* Esconde ao rolar pra baixo, volta ao rolar pra cima (app/cabecalho.tsx
+ * decide o estado via scroll; aqui só o efeito visual). A .navBarra do PC
+ * não é filha do header — fica sticky independente, não se desloca. */
+.iniTopo[data-escondido] {
+  transform: translateY(-100%);
 }
 .iniTopoInterno {
   display: flex;
@@ -1380,4 +1388,305 @@ body.tecTelaCheiaAberta { overflow: hidden; }
 
 @media (max-width: 700px) {
   .vitCapa { aspect-ratio: 3 / 2; }
+}
+
+/* ══ ABAS DO PRODUTO (Fichas Técnicas / Modelos 3D) ═════════════ */
+.prodAbas {
+  display: flex;
+  gap: 6px;
+  border-bottom: 1px solid var(--borda);
+  margin-bottom: 20px;
+}
+.prodAba {
+  appearance: none;
+  background: transparent;
+  border: none;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--texto-apoio);
+  padding: 10px 4px 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+.prodAba:hover { color: var(--texto); }
+.prodAba[data-ativa] {
+  color: var(--texto);
+  border-bottom-color: var(--acao);
+}
+.prodAbaConta {
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  background: var(--fundo-alt);
+  border-radius: 999px;
+  padding: 1px 7px;
+  color: var(--texto-fraco);
+}
+.prodAbaSeta { opacity: 0.6; }
+
+/* ══ FEED DE FICHAS TÉCNICAS ═════════════════════════════════════
+ * PC: 3 colunas fixas, capas grandes (a ficha é auto-explicativa, merece
+ * espaço). Celular: 1 coluna só — feed de rolagem única, como pedido. */
+.prodFichasFeed {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.prodFichaCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-decoration: none;
+  color: inherit;
+}
+.prodFichaCapa {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2480 / 3508; /* A4 */
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-m, 10px);
+  overflow: hidden;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+.prodFichaCard:hover .prodFichaCapa {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-alta);
+  border-color: var(--acao);
+}
+.prodFichaCapa img { object-fit: cover; }
+.prodFichaNum {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgb(0 0 0 / 0.55);
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 650;
+  letter-spacing: 0.03em;
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+.prodFichaNome {
+  font-size: 12.5px;
+  font-weight: 560;
+  line-height: 1.32;
+  color: var(--texto);
+}
+.prodFichasVazio {
+  font-size: 14px;
+  color: var(--texto-apoio);
+  padding: 20px 0;
+}
+
+/* ══ FEED DE MODELOS 3D (todos os 99 — com ou sem GLB pronto) ═══
+ * Mesma grade do feed de fichas: PC 3 colunas grandes, celular 1 coluna
+ * (ajuste responsivo compartilhado em .prod3dFeed no media query abaixo). */
+.prod3dFeed {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.prod3dCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-decoration: none;
+  color: inherit;
+}
+.prod3dCard[data-pendente] { cursor: default; }
+.prod3dCapa {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-m, 10px);
+  overflow: hidden;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+.prod3dCard:not([data-pendente]):hover .prod3dCapa {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-alta);
+  border-color: var(--acao);
+}
+.prod3dCapa img { object-fit: contain; background: #fff; }
+.prod3dSelo {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgb(0 0 0 / 0.62);
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 620;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  padding: 3px 9px;
+}
+.prod3dNome {
+  font-size: 12.5px;
+  font-weight: 560;
+  line-height: 1.32;
+  color: var(--texto);
+}
+
+/* ══ PÁGINA DE UMA FICHA (/fichas/[slug]) ═══════════════════════ */
+.fichaVisor {
+  max-width: 620px;
+  margin: 0 auto 20px;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-g);
+  overflow: hidden;
+  background: var(--superficie);
+}
+.fichaVisor img { width: 100%; height: auto; display: block; }
+.fichaAcoes {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.fichaBaixar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--acao);
+  color: var(--sobre-acao);
+  font-size: 13.5px;
+  font-weight: 620;
+  padding: 11px 20px;
+  border-radius: var(--raio);
+  text-decoration: none;
+}
+.fichaBaixar:hover { background: var(--acao-forte); }
+.fichaNav {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 18px;
+  border-top: 1px solid var(--borda);
+  margin-bottom: 30px;
+}
+.fichaNavLink {
+  font-size: 13px;
+  font-weight: 560;
+  color: var(--texto-apoio);
+  text-decoration: none;
+  max-width: 45%;
+}
+.fichaNavLink:hover { color: var(--texto); }
+.fichaNavLink--prox { text-align: right; margin-left: auto; }
+
+@media (max-width: 700px) {
+  .prodFichasFeed { grid-template-columns: 1fr; gap: 16px; }
+  .prod3dFeed { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* Biblioteca pesquisável: o volume continua visível, mas deixa de ser uma
+ * parede de 100 capas. A densidade é uma preferência do próprio membro. */
+.prodFerramentasBusca { display:grid; grid-template-columns:minmax(220px,1fr) 210px auto auto; align-items:center; gap:10px; margin-bottom:12px; }
+.prodBusca input, .prodFerramentasBusca select { width:100%; min-height:42px; border:1px solid var(--borda); border-radius:10px; background:#fff; color:var(--texto); padding:9px 12px; font:inherit; font-size:13px; }
+.prodBusca input:focus, .prodFerramentasBusca select:focus { outline:2px solid rgb(234 88 12 / .18); border-color:var(--acao); }
+.prodFiltro3d { display:flex; align-items:center; gap:7px; min-height:42px; padding:0 11px; border:1px solid var(--borda); border-radius:10px; background:#fff; font-size:12px; white-space:nowrap; }
+.prodFiltro3d input { accent-color:var(--acao); }
+.prodDensidade { display:flex; overflow:hidden; border:1px solid var(--borda); border-radius:10px; }
+.prodDensidade button { width:34px; min-height:40px; border:0; border-right:1px solid var(--borda); background:#fff; color:var(--texto-apoio); cursor:pointer; }
+.prodDensidade button:last-child { border-right:0; }
+.prodDensidade button[aria-pressed="true"] { background:var(--acao-suave); color:var(--acao-forte); font-weight:750; }
+.prodResultado { margin:0 0 14px; color:var(--texto-fraco); font-size:12px; }
+.prodFichasFeed.grade3 { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.prodFichasFeed.grade2 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.prodFichasFeed.grade1 { grid-template-columns:minmax(0,420px); justify-content:center; gap:24px; }
+.prodFicha3d { position:absolute; right:8px; top:8px; padding:3px 8px; border-radius:999px; background:#264d3b; color:#fff; font:750 10px var(--fonte-medida); letter-spacing:.04em; }
+.srOnly { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+/* Página editorial de um projeto: imagem primeiro, informação progressiva e
+ * 3D como bônus condicional — nunca deixa buraco quando o GLB não existe. */
+.fichaPagina { padding-bottom:34px; }
+.fichaCabecalho { max-width:900px; margin:0 auto 22px; }
+.fichaSobretitulo, .fichaRotulo { display:block; margin:14px 0 7px; color:var(--acao-forte); font:750 10px var(--fonte-medida); letter-spacing:.09em; }
+.fichaChips { display:flex; gap:7px; margin-top:14px; overflow-x:auto; scrollbar-width:none; }
+.fichaChips span { flex:none; padding:6px 10px; border:1px solid var(--borda); border-radius:999px; background:#fff; color:var(--texto-apoio); font-size:11px; white-space:nowrap; }
+.fichaChips span[data-destaque] { border-color:#a8c5b3; background:#eef6f0; color:#264d3b; font-weight:700; }
+.fichaLeitor, .fichaBloco, .fichaDownloads { max-width:900px; margin:0 auto 18px; }
+.fichaSecaoTitulo { display:flex; align-items:end; justify-content:space-between; gap:18px; margin-bottom:12px; }
+.fichaSecaoTitulo h2, .fichaBloco h2, .fichaDownloads h2 { margin:0; font-size:clamp(19px,2.2vw,25px); letter-spacing:-.025em; }
+.fichaSecaoTitulo p { max-width:380px; margin:0; color:var(--texto-apoio); font-size:12.5px; line-height:1.5; }
+.fichaVisor { max-width:min(620px,100%); box-shadow:0 18px 48px rgb(15 23 42 / .08); }
+.fichaBloco { padding:clamp(18px,3vw,28px); border:1px solid var(--borda); border-radius:16px; background:#fff; }
+.fichaBloco3d { background:linear-gradient(145deg,#fff,#f4f6f2); }
+.ficha3dPalco { position:relative; }
+.ficha3dPalco .vis039 { height:clamp(390px,58vh,610px); margin:0 0 12px; }
+.ficha3dCarregando { height:390px; display:grid; place-items:center; border:1px solid var(--borda); border-radius:14px; background:#f6f7f4; color:var(--texto-apoio); font-size:13px; }
+.fichaBotaoSecundario { display:inline-flex; align-items:center; justify-content:center; min-height:38px; padding:8px 12px; border:1px solid var(--borda); border-radius:9px; background:#fff; color:var(--texto); text-decoration:none; font:650 12px var(--fonte); cursor:pointer; }
+.fichaBotaoSecundario:hover { border-color:var(--acao); color:var(--acao-forte); }
+.fichaMedidas { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:16px; }
+.fichaMedidas div { padding:16px; border-radius:12px; background:#f6f4ee; }
+.fichaMedidas strong, .fichaMedidas span { display:block; }
+.fichaMedidas strong { color:#153653; font:780 clamp(19px,3vw,28px) var(--fonte-medida); }
+.fichaMedidas span { margin-top:4px; color:var(--texto-apoio); font-size:11px; }
+.fichaNota { margin:14px 0 0; color:var(--texto-apoio); font-size:12px; line-height:1.5; }
+.fichaContagem { flex:none; padding:5px 9px; border-radius:999px; background:var(--acao-suave); color:var(--acao-forte); font-size:11px; font-weight:700; }
+.fichaTabelaWrap { overflow-x:auto; margin-top:14px; }
+.fichaTabela { width:100%; border-collapse:collapse; font-size:12px; }
+.fichaTabela th { padding:9px 10px; border-bottom:2px solid var(--borda); color:var(--texto-fraco); text-align:left; font-size:9px; letter-spacing:.07em; text-transform:uppercase; }
+.fichaTabela td { padding:11px 10px; border-bottom:1px solid var(--borda); color:var(--texto-apoio); vertical-align:top; }
+.fichaTabela td:first-child { color:var(--texto); min-width:175px; }
+.fichaTabela td b { display:inline-grid; place-items:center; width:23px; height:23px; margin-right:6px; border-radius:7px; background:#264d3b; color:#fff; }
+.fichaDuasColunas { display:grid; grid-template-columns:1fr 1fr; gap:18px; max-width:900px; margin:0 auto; }
+.fichaDuasColunas .fichaBloco { margin:0 0 18px; }
+.fichaLista { display:grid; gap:0; margin-top:14px; }
+.fichaLista li { display:flex; justify-content:space-between; gap:12px; padding:10px 0; border-bottom:1px solid var(--borda); color:var(--texto-apoio); font-size:12px; }
+.fichaLista strong { color:var(--texto); white-space:nowrap; }
+.fichaTags { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+.fichaTags span { padding:8px 10px; border-radius:8px; background:#f6f4ee; color:#31433a; font-size:11.5px; font-weight:650; }
+.fichaEtapas { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:16px; }
+.fichaEtapas li { display:flex; gap:11px; padding:14px; border-radius:12px; background:#f8f7f3; }
+.fichaEtapas li>span { flex:0 0 28px; width:28px; height:28px; display:grid; place-items:center; border-radius:9px; background:#c94d1b; color:#fff; font-weight:800; }
+.fichaEtapas h3 { margin:1px 0 5px; font-size:12px; }
+.fichaEtapas p { margin:0; color:var(--texto-apoio); font-size:11px; line-height:1.48; }
+.fichaEtapas small { display:block; margin-top:7px; color:var(--texto-fraco); font-size:9.5px; }
+.fichaCuidados { border-left:4px solid #66754a; background:#f8faf5; }
+.fichaCuidados ul { display:grid; gap:8px; margin-top:13px; padding-left:18px; color:var(--texto-apoio); font-size:12.5px; line-height:1.5; list-style:disc; }
+.fichaEmPreparacao { background:#fff8ed; }
+.fichaDownloads { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:22px 26px; border-radius:16px; background:#153653; color:#fff; }
+.fichaDownloads .fichaRotulo { color:#f4b08c; margin-top:0; }
+.fichaDownloads p { margin:6px 0 0; color:#cfdae3; font-size:12px; }
+.fichaDownloads .fichaBaixar { flex:none; background:#e45b25; }
+.fichaNav { max-width:900px; margin-right:auto; margin-left:auto; }
+.fichaNavLink { display:flex; align-items:center; gap:9px; }
+.fichaNavLink span { display:grid; gap:2px; }
+.fichaNavLink small { color:var(--texto-fraco); font-size:9px; letter-spacing:.07em; text-transform:uppercase; }
+
+@media (max-width:800px) {
+  .prodFerramentasBusca { grid-template-columns:1fr 1fr; }
+  .prodBusca { grid-column:1/-1; }
+  .prodDensidade { display:none; }
+  .prodFichasFeed.grade1, .prodFichasFeed.grade2, .prodFichasFeed.grade3 { grid-template-columns:1fr; }
+  .fichaDuasColunas { grid-template-columns:1fr; gap:0; }
+  .fichaEtapas { grid-template-columns:1fr; }
+  .fichaDownloads { align-items:flex-start; flex-direction:column; }
+  .fichaDownloads .fichaBaixar { width:100%; justify-content:center; }
+}
+
+@media (min-width:760px) {
+  /* No desktop a altura manda: a folha cabe no monitor sem nascer maior que
+   * a janela. No celular a largura total continua sendo mais confortável. */
+  .fichaVisor { height:min(74dvh,820px); display:flex; justify-content:center; background:#f2f3f1; }
+  .fichaVisor img { width:auto; max-width:100%; height:100%; object-fit:contain; }
+}
+
+@media (max-width:520px) {
+  .prodFerramentasBusca { grid-template-columns:1fr; }
+  .prodBusca { grid-column:auto; }
+  .prodFiltro3d { justify-content:center; }
+  .fichaSecaoTitulo { align-items:flex-start; flex-direction:column; }
+  .fichaMedidas { grid-template-columns:1fr; }
+  .fichaBloco { padding:17px 15px; }
+  .ficha3dPalco .vis039, .ficha3dCarregando { height:min(105vw,460px); min-height:330px; }
+  .fichaNavLink { max-width:48%; font-size:11px; }
 }

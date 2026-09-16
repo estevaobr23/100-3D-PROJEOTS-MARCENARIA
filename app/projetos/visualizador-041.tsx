@@ -7,7 +7,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_041 = "/modelos/041-torre-alta-vertical/model.glb";
+const MODELO_041 = "/modelos/003-torre-alta-vertical/model.glb";
 
 export function Visualizador041() {
   return (

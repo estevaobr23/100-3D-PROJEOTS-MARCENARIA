@@ -5,6 +5,9 @@ import { notFound } from "next/navigation";
 import { requireCustomer } from "@/lib/auth/session";
 import { idsProdutosLiberados } from "@/lib/data/acesso";
 import { acharProduto, CATALOGO } from "@/lib/config/catalogo";
+import { listarFichas } from "@/lib/data/fichas";
+import { listarProjetos3D } from "@/lib/data/projetos3d";
+import { AbasConteudo } from "./abas-conteudo";
 import "../../inicio.css";
 
 type Params = { slug: string };
@@ -48,6 +51,13 @@ export default async function PaginaProduto({
   const principal = produto.itens.filter((i) => i.tipo === "principal");
   const bonus = produto.itens.filter((i) => i.tipo === "bonus");
 
+  // O acervo tem dois feeds de conteúdo principal (fichas em PDF + modelos
+  // 3D) — mostrados como abas em vez do card único de "Conteúdo principal".
+  // Outros produtos futuros continuam usando o card simples.
+  const temFeeds = produto.slug === "acervo-3d-gatos";
+  const fichas = temFeeds ? listarFichas() : [];
+  const projetos3d = temFeeds ? listarProjetos3D() : [];
+
   return (
     <main className="envolucro">
       <div className="pagTopo">
@@ -58,17 +68,26 @@ export default async function PaginaProduto({
         <p className="pagSub">{produto.subtitulo}</p>
       </div>
 
-      {principal.length > 0 && (
+      {temFeeds ? (
         <section className="prodSecao" aria-labelledby="prod-principal">
           <h2 id="prod-principal" className="prodRotulo">
             Conteúdo principal
           </h2>
-          <div className="prodGrade">
-            {principal.map((item) => (
-              <CardItem key={item.slug} item={item} />
-            ))}
-          </div>
+          <AbasConteudo fichas={fichas} projetos3d={projetos3d} />
         </section>
+      ) : (
+        principal.length > 0 && (
+          <section className="prodSecao" aria-labelledby="prod-principal">
+            <h2 id="prod-principal" className="prodRotulo">
+              Conteúdo principal
+            </h2>
+            <div className="prodGrade">
+              {principal.map((item) => (
+                <CardItem key={item.slug} item={item} />
+              ))}
+            </div>
+          </section>
+        )
       )}
 
       {bonus.length > 0 && (

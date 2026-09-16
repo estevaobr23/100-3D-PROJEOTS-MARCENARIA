@@ -5,7 +5,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_A3 = "/modelos/A3-escada-zigue-zague/model.glb";
+const MODELO_A3 = "/modelos/053-escada-em-zigue-zague-de-parede/model.glb";
 
 export function VisualizadorA3() {
   return (

@@ -6,7 +6,7 @@
 
 import { VisualizadorModelo } from "./visualizador-modelo";
 
-const MODELO_040 = "/modelos/040-arvore-media-3-niveis/model.glb";
+const MODELO_040 = "/modelos/002-arvore-media-de-3-niveis/model.glb";
 
 export function Visualizador040() {
   return (
