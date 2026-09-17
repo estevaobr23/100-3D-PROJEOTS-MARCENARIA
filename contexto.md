@@ -4,6 +4,12 @@
 ao retomar, ler ele + `CLAUDE.md` + `gpt.md` + `catalogo-revisado.md`.
 Backup da versão longa anterior em `contexto.md.bak-pre-resumo`.
 
+⚠️ **Desatualizado quanto a produto e motor de acesso.** Desde então: o
+produto principal virou fichas técnicas em PDF (3D é bônus), e a área de
+membros ganhou motor de login + webhook de liberação de acesso real (Cakto).
+Ver `gpt.md`, seção **"Área de membros — fluxo de acesso"** (final do
+arquivo) antes de mexer em login, sessão, produto/oferta ou webhook.
+
 ---
 
 ## 1. O que é o projeto

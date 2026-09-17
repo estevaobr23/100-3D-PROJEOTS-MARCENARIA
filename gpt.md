@@ -884,6 +884,120 @@ projeto no cabeçalho e navegação visual anterior/próximo no final, com retor
 ao catálogo. Depois do último projeto, o próximo é o primeiro; antes do primeiro,
 o anterior é o último.
 
+## Área de membros — fluxo de acesso (estado em 17/09/2026)
+
+Esta seção documenta o motor de liberação de acesso da área de membros —
+diferente do pipeline de geração 3D descrito acima. **Leia antes de mexer em
+login, sessão, produto/oferta ou em qualquer coisa que decida quem entra.**
+
+### Onde cada peça mora
+
+| Peça | Onde |
+|---|---|
+| Banco de dados | Supabase, projeto **`acervo-3d-membros`** (id `mgkesaaozigpyktmxmgj`), região `sa-east-1` |
+| Autenticação | Login por e-mail, sem senha — `lib/auth/session.ts`. Sessão em cookie httpOnly, validada contra a tabela `sessions` |
+| Liberação de acesso | Edge Function **`cakto-webhook`**, deployada no mesmo projeto Supabase acima |
+| Gateway de pagamento | **Cakto** (não é Wiapy — checar sempre antes de reaproveitar template de outro projeto) |
+
+⚠️ Existe outro projeto Supabase, **`gatos-membros`** (id `xcopknglpddvkqalafml`) —
+é de **outro produto** ("100 móveis para gato", ~500 clientes), **sem relação**
+com este acervo. Nunca confundir os dois ao mexer em SQL ou em Edge Function.
+
+### O produto real na Cakto
+
+- Nome: **"100 Projetos de Móveis 3D para Gatos"**
+- `product.id` na Cakto: `53893d88-1a58-4b12-b632-b17f07b28dcb`
+- Gravado em `products.cakto_product_id` no Supabase (linha `slug = 'acervo-3d-gatos'`)
+- Preço R$29,90, mas o mesmo produto tem **3 ofertas** no mesmo checkout
+  (`Checkout Principal`, id `1107648`): VIP R$29,90 (`35dieni`), Downsell
+  R$25,90 (`g64q8jg`), Básico R$22,90 (`3ceh5ve`). As 3 ofertas compartilham o
+  **mesmo `product.id`** — o webhook não distingue plano, dá acesso completo
+  pra qualquer uma das 3 (decisão do usuário: sem diferenciação por plano).
+- Outros produtos "100 Móveis para Gatos..." que aparecem na conta Cakto
+  (Plano Básico, Pacote Completo, etc.) estão todos com `status: "deleted"`
+  — são resíduo de teste antigo, não geram venda nem precisam de atenção.
+
+### O webhook (`cakto-webhook`)
+
+Criado em 17/09/2026 — **antes disso não existia nenhum webhook**, nenhuma
+venda gerava acesso automático (ver "O incidente" abaixo).
+
+- **Edge Function**: `cakto-webhook`, projeto `acervo-3d-membros`,
+  `verify_jwt: false` (a autenticação é o campo `secret` do corpo, não JWT do
+  Supabase).
+- **App webhook na Cakto**: id `68595`, nome "Acervo 3D - Área de Membros",
+  evento assinado: só `purchase_approved`. Vinculado só ao produto
+  `53893d88-...` acima — **lembrar a regra da Cakto: o webhook escuta uma
+  lista explícita de produtos, não a conta inteira.** Produto novo = vincular
+  no mesmo passo da criação, nunca depois.
+- **Secret**: gerado pela própria Cakto ao criar o webhook (não escolhido por
+  nós), guardado em `CAKTO_WEBHOOK_SECRET` nos Secrets da Edge Function no
+  Supabase. Não existe MCP que leia/grave esse secret — sempre manual pelo
+  painel: `https://supabase.com/dashboard/project/mgkesaaozigpyktmxmgj/functions/cakto-webhook/details`.
+- **Formato do payload Cakto** (diferente de outros gateways que a skill
+  `area-de-membros` já viu — ex.: Wiapy): autenticação em `body.secret`,
+  aprovação é `event === "purchase_approved"`, produto vem como **objeto
+  único** em `data.product` (não array), `data` pode chegar como **array**
+  se o webhook for V2 (um item por pedido da mesma cobrança — principal,
+  bump, upsell, downsell); a função trata os dois formatos.
+- **Casamento de produto em 3 camadas** (mesmo padrão validado em outros
+  projetos): 1) por `product.id` — bate, libera; 2) não bateu? por título
+  normalizado — bate, libera **e autocorrige** o `cakto_product_id` salvo;
+  3) não bateu nem por título — não cadastra, não libera, só loga como não
+  mapeado.
+- **Idempotência** por `UNIQUE`, nunca por `if`: `customers.email`,
+  `purchases.transaction_id`, `purchase_items(purchase_id,product_id)`,
+  `entitlements(customer_id,product_id)`. Reenviar o mesmo evento não duplica.
+- **Fora de escopo de propósito**: refund, chargeback, cancelamento — revogar
+  acesso continua sendo ação manual e deliberada, nunca automática por
+  webhook (evita um chargeback fraudulento cortar cliente legítimo sem
+  revisão humana).
+
+### O incidente (17/09/2026) — histórico, para não repetir
+
+Ao auditar a área pela primeira vez, o banco tinha **1 customer, 0 purchases,
+1 entitlement** — todos de teste manual. Nenhum webhook existia (nem no
+código do app, nem como Edge Function). A Cakto, no mesmo instante, mostrava
+**1.461 pedidos históricos** (de várias ofertas/produtos diferentes ao longo
+do tempo, a maioria de produtos hoje `deleted`) e vendas `paid` reais
+acontecendo no produto atual sem gerar acesso nenhum.
+
+Causa: o webhook nunca foi criado depois da decisão de trocar de motor
+Wiapy→banco próprio em 09/09 — ficou como pendência conhecida, documentada no
+`.env.example`, mas nunca implementada.
+
+Correção aplicada: criada a Edge Function, criado o webhook na Cakto
+(vinculado ao produto certo), testado ponta a ponta com payload real
+(`entitlement_granted: true` confirmado por query direta no banco, não só
+pela resposta do webhook). Processados retroativamente **3 pedidos `paid`**
+do dia 17/09 (as únicas vendas do produto atual até então sem acesso — os
+1.461 pedidos antigos são de ofertas/produtos já `deleted`, fora de escopo):
+Jose Alves, Kesia Santos, Anselmo Oliveira — todos com `entitlement: active`
+confirmado.
+
+### Como diagnosticar "comprou e não tem acesso" (auditoria rápida)
+
+Rodar nesta ordem em `mgkesaaozigpyktmxmgj`, é onde a contagem para que
+indica o defeito:
+
+```sql
+select count(*) from customers;      -- a pessoa chegou?
+select count(*) from purchases;      -- a compra foi registrada?
+select count(*) from entitlements;   -- o acesso foi concedido?
+```
+
+- `customers` = 0 → o webhook nunca chegou (checar secret, URL, se o produto
+  está vinculado ao app webhook na Cakto).
+- `customers` > 0, `purchases` = 0 → chegou e falhou antes de gravar, ver log
+  da Edge Function no painel Supabase.
+- `purchases` > 0, `entitlements` = 0 → o webhook funcionou e **recusou** o
+  produto (não bateu nem por id nem por título) — checar
+  `products.cakto_product_id` contra o `product.id` real do pedido na Cakto.
+
+Nunca liberar acesso manual pra compra `waiting_payment`/pendente — quando
+pagar de verdade, o webhook libera sozinho. Liberação manual só se justifica
+pra corrigir um caso já `paid` que ficou pra trás (como os 3 de 17/09 acima).
+
 ## Regras permanentes
 
 - Trabalhar por bloco. Não emendar um bloco no seguinte sem checkpoint humano.
@@ -896,3 +1010,5 @@ o anterior é o último.
 - Não usar textura HD, geometria detalhada ou processamento adicional por padrão.
 - Manter uma pasta e uma rota estáveis para cada projeto aprovado.
 - Cada bloco só entra na área depois de uma revisão humana.
+- Não mexer no webhook da Cakto (`cakto-webhook`) ou no casamento de produto
+  sem reler a seção "Área de membros — fluxo de acesso" acima primeiro.
