@@ -47,9 +47,14 @@ export type Produto = {
 export const CATALOGO: Produto[] = [
   {
     slug: "acervo-3d-gatos",
-    // Mesma string usada no INSERT de `products` do banco novo (acervo-3d-membros).
-    // Trocar por um id real da Cakto quando houver checkout.
-    caktoProductId: "placeholder-sem-checkout",
+    // Tem que ser IDÊNTICO ao products.cakto_product_id no Supabase
+    // (projeto acervo-3d-membros) — é essa string que casa o entitlement do
+    // cliente com este produto em app/produto/[slug]/page.tsx. Atualizado em
+    // 17/09/2026 para o id real do produto ativo na Cakto ("100 Projetos de
+    // Móveis 3D para Gatos"); o webhook cakto-webhook grava esse mesmo id em
+    // products.cakto_product_id a cada compra aprovada — ver gpt.md, seção
+    // "Área de membros — fluxo de acesso", antes de trocar este valor de novo.
+    caktoProductId: "53893d88-1a58-4b12-b632-b17f07b28dcb",
     titulo: "Biblioteca de Fichas Visuais — Móveis para Gatos",
     subtitulo:
       "Fichas visuais A4 com medidas sugeridas, peças e montagem. Projetos selecionados também incluem visualização 3D interativa.",
